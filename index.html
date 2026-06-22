@@ -124,10 +124,90 @@ body.hov-img #cur-label{opacity:1}
 /* ─── ABOUT ─── */
 #about{padding:130px 0 80px}
 .ab-inner{max-width:1280px;margin:0 auto;padding:0 48px}
-.ab-top{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:end;margin-bottom:70px}
+.ab-top{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:center;margin-bottom:70px}
 .ab-left{}
-.ab-decade{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(7rem,14vw,14rem);line-height:.85;color:transparent;-webkit-text-stroke:1.5px var(--border);letter-spacing:-.02em;margin-bottom:-16px}
-.ab-decade-lbl{font-family:'Barlow Condensed',sans-serif;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--green);margin-bottom:0}
+
+/* ─── DECADE: SCANNING ELECTRICITY ─── */
+
+/* The bright scan beam travels from left → right using clip-path inset */
+@keyframes electricScan{
+  /* beam enters from the left */
+  0%   {clip-path:inset(0 97% 0 0 round 2px);opacity:1}
+  /* beam sweeps across to the right */
+  78%  {clip-path:inset(0 0 0 97% round 2px);opacity:1}
+  /* beam exits, brief pause at right edge */
+  82%  {clip-path:inset(0 0 0 97% round 2px);opacity:0}
+  /* instant reset to left, hidden */
+  83%  {clip-path:inset(0 97% 0 0 round 2px);opacity:0}
+  /* pause before next sweep */
+  100% {clip-path:inset(0 97% 0 0 round 2px);opacity:0}
+}
+
+/* Base text flares briefly when beam completes its run */
+@keyframes electricFlare{
+  0%,75%,100%{-webkit-text-stroke:2px rgba(60,175,71,.3);text-shadow:none}
+  /* dropout just before flare */
+  78%{-webkit-text-stroke:1px rgba(60,175,71,.07);text-shadow:none}
+  /* surge */
+  81%{-webkit-text-stroke:4px rgba(147,255,170,.95);text-shadow:0 0 20px #3caf47,0 0 45px #3caf47,0 0 90px rgba(60,175,71,.7),0 0 140px rgba(60,175,71,.3)}
+  /* settle */
+  87%{-webkit-text-stroke:2px rgba(60,175,71,.3);text-shadow:0 0 8px rgba(60,175,71,.2)}
+}
+
+/* Gentle float – starts after first scan completes */
+@keyframes decadeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* Label accent line slides in */
+@keyframes lblLine{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+
+.ab-decade-lbl{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--green);
+  display:flex;align-items:center;gap:12px;margin-bottom:8px;padding-top:8px;
+}
+.ab-decade-lbl::before{
+  content:'';display:inline-block;width:32px;height:2px;background:var(--green);
+  transform-origin:left;transform:scaleX(0);transition:transform .6s cubic-bezier(.22,1,.36,1) .2s;
+}
+.ab-left.in .ab-decade-lbl::before{transform:scaleX(1)}
+
+/* Base: dim green outline always visible */
+.ab-decade{
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;
+  font-size:clamp(8rem,21vw,26rem);
+  line-height:.85;letter-spacing:-.02em;margin-bottom:-16px;
+  color:transparent;
+  -webkit-text-stroke:2px rgba(60,175,71,.3);
+  position:relative;overflow:visible;
+}
+
+/* Scanning beam overlay: same text, bright stroke + glow, clipped to a narrow strip */
+.ab-decade::after{
+  content:'10+';
+  position:absolute;inset:0;
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;
+  font-size:inherit;line-height:inherit;letter-spacing:inherit;
+  color:transparent;
+  -webkit-text-stroke:5px #fff;
+  text-shadow:
+    0 0 12px #3caf47,
+    0 0 28px #3caf47,
+    0 0 55px rgba(60,175,71,.85),
+    0 0 90px rgba(60,175,71,.45),
+    0 0 140px rgba(60,175,71,.2);
+  pointer-events:none;
+  clip-path:inset(0 97% 0 0);
+  opacity:0;
+}
+
+/* Triggered by scroll reveal (.ab-left gets .in via IntersectionObserver) */
+.ab-left.in .ab-decade{
+  animation:electricFlare 2.8s cubic-bezier(.4,0,.6,1) .4s infinite,
+            decadeFloat 5.5s ease-in-out 3s infinite;
+}
+.ab-left.in .ab-decade::after{
+  animation:electricScan 2.8s cubic-bezier(.4,0,.6,1) .4s infinite;
+}
 .ab-right h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.4rem,4.5vw,4.2rem);line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:28px}
 .ab-right h2 em{color:var(--green);font-style:normal}
 .ab-right p{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:520px;margin-bottom:14px}
@@ -330,7 +410,7 @@ footer{background:var(--dark);padding:80px 0 0}
   .ab-inner,.svc-inner,.proj-inner,.proc-inner,.stats-inner,.tst-inner{padding:0 20px}
   #about{padding:80px 0}
   .ab-top{grid-template-columns:1fr;gap:32px}
-  .ab-decade{font-size:7rem}
+  .ab-decade{font-size:clamp(7rem,24vw,10rem)}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .svc-cell:nth-child(3n){border-right:1px solid var(--border)}
   .svc-cell:nth-child(2n){border-right:none}
@@ -489,7 +569,9 @@ footer{background:var(--dark);padding:80px 0 0}
     </div>
   </div>
   <div class="hero-r">
-    <video src="Images/HeroVid.mp4" autoplay muted loop playsinline></video>
+    <video id="hero-vid" autoplay muted loop playsinline webkit-playsinline preload="auto">
+      <source src="Images/hero-web.mp4" type="video/mp4"/>
+    </video>
     <div class="hero-r-badge">
       <strong>5.0 ★</strong>
       <span>11 Verified Reviews · Builderscrack</span>
@@ -1265,6 +1347,26 @@ window.addEventListener('scroll',()=>btt.classList.toggle('show',window.scrollY>
 
 // ── PREVENT img drag ──
 document.querySelectorAll('img').forEach(i=>i.addEventListener('dragstart',e=>e.preventDefault()));
+
+// ── HERO VIDEO: force play on all browsers/iOS ──
+(function(){
+  const v=document.getElementById('hero-vid');
+  if(!v)return;
+  function tryPlay(){
+    const p=v.play();
+    if(p!==undefined){p.catch(function(){});}
+  }
+  // Try immediately
+  tryPlay();
+  // Retry on canplay (covers slow network + iOS lazy load)
+  v.addEventListener('canplay',tryPlay,{once:true});
+  // iOS Safari sometimes needs a tiny delay after DOM settles
+  window.addEventListener('load',function(){setTimeout(tryPlay,200);});
+  // Fallback: re-trigger on first user interaction for browsers that block autoplay
+  function unlockOnTouch(){tryPlay();document.removeEventListener('touchstart',unlockOnTouch);document.removeEventListener('click',unlockOnTouch);}
+  document.addEventListener('touchstart',unlockOnTouch,{once:true,passive:true});
+  document.addEventListener('click',unlockOnTouch,{once:true});
+})();
 </script>
 </body>
 </html>
