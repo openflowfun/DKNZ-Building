@@ -59,8 +59,9 @@ body.hov-img #cur-label{opacity:1}
 .d4{transition-delay:.32s}.d5{transition-delay:.4s}.d6{transition-delay:.48s}
 
 /* ─── NAV ─── */
-#nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-columns:42fr 58fr;align-items:center;height:82px;transition:background .4s,box-shadow .4s,height .4s}
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;display:grid;grid-template-columns:42fr 58fr;align-items:center;height:82px;transition:background .4s,box-shadow .4s,height .4s,transform .35s cubic-bezier(.4,0,.2,1)}
 #nav.scrolled{background:rgba(245,244,240,.96);backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--border);height:66px}
+#nav.nav-hidden{transform:translateY(-100%)}
 .nav-left{display:flex;align-items:center;padding:0 40px;height:100%}
 .nav-right{display:flex;align-items:center;justify-content:center;gap:28px;padding:0 28px}
 /* Logo: SVG filter - green pixels kept, all achromatic/white/dark removed. Works both states. */
@@ -149,15 +150,16 @@ body.hov-img #cur-label{opacity:1}
 .svc-head h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.4rem,4vw,3.8rem);line-height:.95;text-transform:uppercase;letter-spacing:-.01em}
 .svc-count{font-family:'Barlow Condensed',sans-serif;font-size:5rem;font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(12,14,11,.15);letter-spacing:-.02em;line-height:1}
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border)}
-.svc-cell{border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 24px;position:relative;overflow:hidden;background:var(--cream);transition:background .4s}
+.svc-cell{border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 24px;position:relative;overflow:hidden;background:var(--cream);transition:background .4s;display:flex;flex-direction:column;align-items:center;text-align:center}
 .svc-cell:nth-child(4n){border-right:none}
 .svc-cell:nth-last-child(-n+4){border-bottom:none}
 .svc-cell:hover{background:var(--gd)}
-.svc-n{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.18em;color:var(--muted);font-weight:600;margin-bottom:14px;transition:color .4s}
+.svc-n{display:none}
 .svc-icon{width:32px;height:32px;color:var(--green);margin-bottom:12px;transition:color .4s}
 .svc-cell:hover .svc-icon{color:var(--gl)}
-.svc-name{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px;transition:color .4s}
-.svc-cell:hover .svc-name,.svc-cell:hover .svc-n{color:#fff}
+.svc-name{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px;transition:color .4s;text-align:center}
+.svc-cell{text-align:center;align-items:center}
+.svc-cell:hover .svc-name{color:#fff}
 .svc-desc{font-size:.78rem;color:var(--muted);line-height:1.6;max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .4s,color .4s;opacity:0}
 .svc-cell:hover .svc-desc{max-height:80px;opacity:1;color:rgba(255,255,255,.65)}
 
@@ -348,8 +350,52 @@ footer{background:var(--dark);padding:80px 0 0}
   .proj-grid{grid-template-columns:1fr}
   .proj-item:nth-child(1),.proj-item:nth-child(4){grid-row:auto}
   .stats-grid{grid-template-columns:1fr 1fr}
-  .hero-btns{flex-direction:column}
   .btn-g,.btn-ghost{justify-content:center}
+}
+
+/* ═══ MOBILE HERO OVERHAUL ═══
+   Video plays as full-screen bg behind green panel.
+   Green panel fills 100svh with all content on top.
+   Desktop layout completely untouched.
+*/
+@media(max-width:768px){
+  /* Hero: single stacking container, true mobile viewport height */
+  #hero{display:block;position:relative;height:100svh;min-height:100vh;overflow:hidden}
+
+  /* Video panel: absolute behind everything */
+  .hero-r{position:absolute;inset:0;height:100%;z-index:0}
+  .hero-r video,.hero-r img{width:100%;height:100%;object-fit:cover;animation:none}
+  .hero-r-badge{display:none}
+
+  /* Green panel: full height on top of video */
+  .hero-l{
+    position:relative;
+    z-index:1;
+    height:100svh;
+    min-height:100vh;
+    padding:70px 24px 0;
+    background:rgba(14,47,20,.88);
+    justify-content:flex-start;
+    overflow:hidden
+  }
+
+  /* Larger watermark fills mobile width */
+  .hero-l::before{font-size:34vw;bottom:10vw}
+
+  /* Hero text sizing */
+  .hero-eye{font-size:.54rem;margin-bottom:10px}
+  .hero-h1{font-size:clamp(2.8rem,11.5vw,4.6rem);line-height:.9;margin-bottom:12px}
+  .hero-sub{font-size:.88rem;max-width:100%;margin-bottom:0}
+
+  /* Buttons: side-by-side, float above stat strip */
+  .hero-btns{bottom:90px;left:24px;right:24px;flex-direction:row;flex-wrap:wrap;gap:10px}
+  .btn-g,.btn-ghost{padding:13px 18px;font-size:.72rem}
+
+  /* Show all 5 stats on mobile */
+  .hss-item:nth-child(n+4){display:flex}
+  .hss-item{flex:1;padding:14px 8px}
+  .hss-num{font-size:1.1rem}
+  .hss-lbl{font-size:.42rem;letter-spacing:.12em}
 }
 </style>
 </head>
@@ -374,7 +420,7 @@ footer{background:var(--dark);padding:80px 0 0}
   </div>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#about">Story</a></li>
+      <li><a href="#about">Our Story</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Projects</a></li>
       <li><a href="#process">Process</a></li>
@@ -413,7 +459,7 @@ footer{background:var(--dark);padding:80px 0 0}
     <img src="Images/logo.png" alt="DKNZ" class="hero-logo"/>
     <div class="hero-stat-strip">
       <div class="hss-item"><div class="hss-num">10+</div><div class="hss-lbl">Years Experience</div></div>
-      <div class="hss-item"><div class="hss-num">13+</div><div class="hss-lbl">Jobs Done</div></div>
+      <div class="hss-item"><div class="hss-num">50+</div><div class="hss-lbl">Jobs Done</div></div>
       <div class="hss-item"><div class="hss-num">5.0★</div><div class="hss-lbl">Verified Rating</div></div>
       <div class="hss-item"><div class="hss-num">100%</div><div class="hss-lbl">On Budget</div></div>
       <div class="hss-item"><div class="hss-num">LBP</div><div class="hss-lbl">Licensed Builder</div></div>
@@ -488,7 +534,7 @@ footer{background:var(--dark);padding:80px 0 0}
         <div class="ab-decade">10+</div>
       </div>
       <div class="ab-right sr-r">
-        <h2>Hi, We're <em>DKNZ</em> -<br/>Built on Trust &amp; Precision</h2>
+        <h2>Crafting Excellence, Building Trust -<br/>One Project at a Time.</h2>
         <p>We are <strong>licensed builders</strong> and have been building in Christchurch for 10 years. With vast experience in large multi-unit new builds and <strong>earthquake repairs</strong>, we bring specialist knowledge to every project.</p>
         <p>We complete all jobs <strong>on time, within budget</strong> and will accelerate programmes when required. Owner <strong>Dave</strong> leads every project personally - from Banks Peninsula to Waimakariri.</p>
         <div class="ab-tags">
@@ -519,7 +565,7 @@ footer{background:var(--dark);padding:80px 0 0}
         <div class="svc-label">What We Do</div>
         <h2>Expert Services<br/>Across Canterbury</h2>
       </div>
-      <div class="svc-count sr-r d2">14</div>
+      <div class="svc-count sr-r d2">16</div>
     </div>
     <div class="svc-grid sr d3">
 
@@ -619,6 +665,20 @@ footer{background:var(--dark);padding:80px 0 0}
         <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M9 12h12"/></svg>
         <div class="svc-name">Windows &amp; Doors</div>
         <div class="svc-desc">Window and door replacement, installation and repair - joinery and weatherproofing.</div>
+      </div>
+
+      <div class="svc-cell">
+        <div class="svc-n">15</div>
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="6" x2="3" y2="20"/><line x1="21" y1="6" x2="21" y2="20"/><line x1="7" y1="6" x2="7" y2="20"/><line x1="11" y1="6" x2="11" y2="20"/><line x1="15" y1="6" x2="15" y2="20"/><line x1="3" y1="20" x2="21" y2="20"/></svg>
+        <div class="svc-name">Fencing</div>
+        <div class="svc-desc">Timber, metal and composite fencing - boundary, privacy and feature fencing for any property.</div>
+      </div>
+
+      <div class="svc-cell">
+        <div class="svc-n">16</div>
+        <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 3a3 3 0 014 4L7 21H3v-4L18 3z"/><path d="M15 6l3 3"/></svg>
+        <div class="svc-name">Painting &amp; Plastering</div>
+        <div class="svc-desc">Interior and exterior painting, GIB stopping, texture coatings and premium plaster finishes.</div>
       </div>
 
     </div>
@@ -753,7 +813,7 @@ footer{background:var(--dark);padding:80px 0 0}
         <div class="stat-l">Years in Canterbury</div>
       </div>
       <div class="stat-box sr d2">
-        <span class="stat-n"><span data-count="13" data-sfx="+">0</span></span>
+        <span class="stat-n"><span data-count="50" data-sfx="+">0</span></span>
         <div class="stat-l">Jobs Completed</div>
       </div>
       <div class="stat-box sr d3">
@@ -1063,10 +1123,18 @@ window.addEventListener('load',()=>window.scrollTo({top:0,behavior:'instant'}));
 const pb=document.getElementById('pb');
 window.addEventListener('scroll',()=>{pb.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';},{passive:true});
 
-// ── NAV ──
+// ── NAV — hide on scroll down, reveal on scroll up ──
 const nav=document.getElementById('nav');
+let lastY=0;
 window.addEventListener('scroll',()=>{
-  nav.classList.toggle('scrolled',window.scrollY>80);
+  const y=window.scrollY;
+  nav.classList.toggle('scrolled',y>80);
+  if(y>80){
+    nav.classList.toggle('nav-hidden',y>lastY);
+  } else {
+    nav.classList.remove('nav-hidden');
+  }
+  lastY=y;
 },{passive:true});
 
 // ── LOGO BG CLEANER: canvas fallback - mirrors SVG filter logic (A = 4G-2R-2B, keep only green) ──
