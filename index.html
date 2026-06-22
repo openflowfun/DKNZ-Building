@@ -434,9 +434,18 @@ footer{background:var(--dark);padding:80px 0 0}
   .stats-grid{grid-template-columns:1fr 1fr}
   .tst-text{font-size:1.4rem}
   .con-l,.con-r{padding:60px 20px}
-  .ft-inner{grid-template-columns:1fr;gap:32px;padding:0 20px}
-  .ft-brand{grid-column:auto}
-  .ft-bar{padding:16px 20px;flex-direction:column;align-items:flex-start}
+  /* Footer: 2-col links + centered logo below */
+  .ft-inner{grid-template-columns:1fr 1fr;gap:28px 16px;padding:0 20px}
+  .ft-brand{
+    order:3;grid-column:1/-1;
+    display:flex;flex-direction:column;align-items:center;text-align:center;
+    border-top:1px solid rgba(255,255,255,.07);padding-top:28px;margin-top:4px
+  }
+  .ft-tagline,.ft-brand>div{display:none}
+  .ft-logo{margin:0 auto;height:44px}
+  .ft-head{text-align:center}
+  .ft-links{align-items:center}
+  .ft-bar{padding:20px 20px;flex-direction:column;align-items:center;text-align:center;gap:6px}
   #btt{bottom:20px;right:20px}
   #svc-cta{padding:52px 0}
   .svc-cta-inner{padding:0 20px}
