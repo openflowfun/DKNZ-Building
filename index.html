@@ -355,47 +355,70 @@ footer{background:var(--dark);padding:80px 0 0}
 
 /* ═══ MOBILE HERO OVERHAUL ═══
    Video plays as full-screen bg behind green panel.
-   Green panel fills 100svh with all content on top.
-   Desktop layout completely untouched.
+   Uses 100dvh (dynamic viewport height) — the only unit that
+   correctly tracks iOS Safari's shrinking/growing chrome.
+   min-height:100vh is intentionally ABSENT — on iOS it equals
+   the full physical screen height and causes ~93px overflow,
+   pushing the stats strip below the visible area.
 */
 @media(max-width:768px){
   /* Hero: single stacking container, true mobile viewport height */
-  #hero{display:block;position:relative;height:100svh;min-height:100vh;overflow:hidden}
+  #hero{
+    display:block;
+    position:relative;
+    height:100svh;     /* fallback */
+    height:100dvh;     /* tracks browser chrome dynamically */
+    overflow:hidden
+  }
 
   /* Video panel: absolute behind everything */
   .hero-r{position:absolute;inset:0;height:100%;z-index:0}
   .hero-r video,.hero-r img{width:100%;height:100%;object-fit:cover;animation:none}
   .hero-r-badge{display:none}
 
-  /* Green panel: full height on top of video */
+  /* Green panel: fills the hero, sits on top of video */
   .hero-l{
     position:relative;
     z-index:1;
     height:100svh;
-    min-height:100vh;
-    padding:70px 24px 0;
-    background:rgba(14,47,20,.88);
-    justify-content:flex-start;
+    height:100dvh;
+    min-height:unset;
+    /* padding-bottom=170px reserves space for buttons(52px)+gap(18px)+stats(60px)+breathing(40px)
+       justify-content:center then centers the text block in the remaining top area */
+    padding:64px 24px 170px;
+    /* Dark neutral scrim — no green tint, video shows through clearly */
+    background:linear-gradient(170deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.28) 50%,rgba(0,0,0,.58) 100%);
+    justify-content:center;
     overflow:hidden
   }
 
-  /* Larger watermark fills mobile width */
-  .hero-l::before{font-size:34vw;bottom:10vw}
+  /* DKNZ watermark — moved up so it sits in the middle void */
+  .hero-l::before{font-size:34vw;bottom:21vw}
 
-  /* Hero text sizing */
-  .hero-eye{font-size:.54rem;margin-bottom:10px}
-  .hero-h1{font-size:clamp(2.8rem,11.5vw,4.6rem);line-height:.9;margin-bottom:12px}
-  .hero-sub{font-size:.88rem;max-width:100%;margin-bottom:0}
+  /* Hero text — text-shadow keeps it legible over any video frame */
+  .hero-eye{font-size:.52rem;margin-bottom:10px;white-space:normal;text-shadow:0 1px 8px rgba(0,0,0,.7)}
+  .hero-h1{font-size:clamp(2.8rem,11.5vw,4.6rem);line-height:.92;margin-bottom:10px;text-shadow:0 2px 16px rgba(0,0,0,.8)}
+  .hero-sub{font-size:.88rem;max-width:100%;margin-bottom:0;line-height:1.6;text-shadow:0 1px 10px rgba(0,0,0,.85)}
 
-  /* Buttons: side-by-side, float above stat strip */
-  .hero-btns{bottom:90px;left:24px;right:24px;flex-direction:row;flex-wrap:wrap;gap:10px}
-  .btn-g,.btn-ghost{padding:13px 18px;font-size:.72rem}
+  /* Buttons: side-by-side, lifted 40px off the stats strip for breathing room */
+  .hero-btns{
+    bottom:110px;
+    left:24px;
+    right:24px;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    gap:10px
+  }
+  .btn-g,.btn-ghost{flex:1;padding:14px 10px;font-size:.7rem;justify-content:center;text-align:center}
 
-  /* Show all 5 stats on mobile */
+  /* Stats strip: 30px off the bottom edge for breathing room */
+  .hero-stat-strip{bottom:30px;border-radius:4px;overflow:hidden}
+
+  /* Show all 5 stats, compact for narrow screens */
   .hss-item:nth-child(n+4){display:flex}
-  .hss-item{flex:1;padding:14px 8px}
-  .hss-num{font-size:1.1rem}
-  .hss-lbl{font-size:.42rem;letter-spacing:.12em}
+  .hss-item{flex:1;padding:12px 4px}
+  .hss-num{font-size:1rem}
+  .hss-lbl{font-size:.38rem;letter-spacing:.10em}
 }
 </style>
 </head>
