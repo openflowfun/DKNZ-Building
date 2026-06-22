@@ -419,17 +419,18 @@ footer{background:var(--dark);padding:80px 0 0}
   .ham{display:flex}
   .nav-logo{height:40px}
   .hero-l{padding:80px 24px 60px}
-  .hero-logo{left:24px;bottom:24px}
+  .hero-logo{display:none}
   .ab-inner,.svc-inner,.proj-inner,.proc-inner,.stats-inner,.tst-inner{padding:0 20px}
   #about{padding:80px 0}
   .ab-top{grid-template-columns:1fr;gap:32px}
-  .ab-decade{font-size:clamp(7rem,24vw,10rem)}
+  .ab-decade{font-size:clamp(7rem,24vw,10rem);text-align:center}
+  .ab-decade-lbl{justify-content:center}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .svc-cell:nth-child(3n){border-right:1px solid var(--border)}
   .svc-cell:nth-child(2n){border-right:none}
   .proj-grid{grid-template-columns:1fr 1fr}
   .proj-item:nth-child(1),.proj-item:nth-child(4){grid-row:auto}
-  .proc-steps{grid-template-columns:1fr 1fr}
+  .proc-steps{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:1fr 1fr}
   .tst-text{font-size:1.4rem}
   .con-l,.con-r{padding:60px 20px}
@@ -522,19 +523,48 @@ footer{background:var(--dark);padding:80px 0 0}
   .hss-num{font-size:1rem}
   .hss-lbl{font-size:.38rem;letter-spacing:.10em}
 
-  /* ── Mobile-only project lightbox ── */
-  #proj-lightbox{display:none;position:fixed;inset:0;z-index:700;background:#000;flex-direction:column;align-items:center;justify-content:center}
-  #proj-lightbox.open{display:flex}
-  #plb-img-wrap{width:100%;flex:1;overflow:hidden;display:flex;align-items:center;justify-content:center}
-  #plb-img{width:100%;height:100%;object-fit:contain;display:block}
-  #plb-close{position:absolute;top:16px;right:16px;width:48px;height:48px;background:rgba(255,255,255,.12);border:none;border-radius:50%;color:#fff;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;touch-action:manipulation}
-  #plb-prev,#plb-next{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(255,255,255,.12);border:none;border-radius:50%;color:#fff;font-size:1.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;touch-action:manipulation}
-  #plb-prev{left:12px}
-  #plb-next{right:12px}
-  #plb-info{width:100%;padding:16px 20px;background:rgba(14,47,20,.95)}
-  #plb-cat{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gl);margin-bottom:4px}
-  #plb-name{font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.04em}
-  #plb-counter{font-family:'Barlow Condensed',sans-serif;font-size:.62rem;letter-spacing:.16em;color:rgba(255,255,255,.4);margin-top:4px}
+  /* ── Nav: subtle dark gradient hides logo white-box on transparent nav ── */
+  #nav:not(.scrolled) .nav-left{background:linear-gradient(90deg,rgba(0,0,0,.28) 0%,transparent 75%)}
+
+  /* ── Projects: single-image carousel on mobile ── */
+  #portfolio .proj-grid{display:block;position:relative;overflow:visible}
+  #portfolio .proj-item{display:none;min-height:64vw;border-radius:0;grid-row:auto!important}
+  #portfolio .proj-item img{min-height:64vw;max-height:72vw}
+  #portfolio .proj-item.proj-active{display:block}
+  .proj-carousel-nav{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:8px}
+  .proj-carousel-btn{width:44px;height:44px;background:var(--dark);border:none;color:#fff;font-size:1.6rem;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:background .2s}
+  .proj-carousel-btn:active{background:var(--green)}
+  .proj-dots-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center;flex:1}
+  .proj-dot{width:7px;height:7px;border-radius:50%;background:rgba(12,14,11,.18);border:none;cursor:pointer;padding:0;touch-action:manipulation;transition:background .2s,transform .2s;-webkit-tap-highlight-color:transparent}
+  .proj-dot.active{background:var(--green);transform:scale(1.4)}
+  .proj-slide-info{padding:10px 0 4px;font-family:'Barlow Condensed',sans-serif}
+  .proj-slide-cat{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:2px}
+  .proj-slide-name{font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--dark)}
+
+  /* ── Process: clean vertical timeline on mobile ── */
+  .proc-steps{gap:1px;background:rgba(255,255,255,.07)}
+  .proc-step{
+    padding:22px 20px;
+    display:grid;
+    grid-template-columns:56px 1fr;
+    grid-template-rows:auto auto;
+    column-gap:14px;
+    row-gap:4px;
+    align-items:start
+  }
+  .proc-num-wrap{grid-row:1/3;align-self:center;margin-bottom:0;flex-direction:column;align-items:center;gap:0}
+  .proc-num{
+    font-size:1.4rem;
+    width:48px;height:48px;
+    display:flex;align-items:center;justify-content:center;
+    border:1.5px solid rgba(60,175,71,.3);
+    border-radius:50%;
+    background:rgba(60,175,71,.08);
+    line-height:1
+  }
+  .proc-line{display:none}
+  .proc-title{grid-column:2;font-size:.95rem;margin-bottom:0;align-self:end}
+  .proc-desc{grid-column:2;font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.6}
 }
 </style>
 </head>
@@ -550,16 +580,15 @@ footer{background:var(--dark);padding:80px 0 0}
 </svg>
 
 <div id="pb"></div>
-<!-- ── MOBILE PROJECT LIGHTBOX ── -->
-<div id="proj-lightbox">
-  <button id="plb-close">✕</button>
-  <button id="plb-prev">‹</button>
-  <button id="plb-next">›</button>
-  <div id="plb-img-wrap"><img id="plb-img" src="" alt=""/></div>
-  <div id="plb-info">
-    <div id="plb-cat"></div>
-    <div id="plb-name"></div>
-    <div id="plb-counter"></div>
+<!-- ── IMAGE LIGHTBOX (opens on tap in mobile carousel) ── -->
+<div id="proj-lightbox" style="display:none;position:fixed;inset:0;z-index:750;background:rgba(0,0,0,.96);flex-direction:column;align-items:center;justify-content:center">
+  <button id="plb-close" style="position:absolute;top:16px;right:16px;width:48px;height:48px;background:rgba(255,255,255,.12);border:none;border-radius:50%;color:#fff;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;touch-action:manipulation">✕</button>
+  <button id="plb-prev" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;background:rgba(255,255,255,.12);border:none;border-radius:50%;color:#fff;font-size:2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;touch-action:manipulation">‹</button>
+  <button id="plb-next" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:48px;height:48px;background:rgba(255,255,255,.12);border:none;border-radius:50%;color:#fff;font-size:2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;touch-action:manipulation">›</button>
+  <img id="plb-img" src="" alt="" style="max-width:100%;max-height:80vh;object-fit:contain;display:block"/>
+  <div id="plb-info" style="width:100%;padding:14px 20px;background:rgba(14,47,20,.9)">
+    <div id="plb-cat" style="font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gl);margin-bottom:3px"></div>
+    <div id="plb-name" style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.04em"></div>
   </div>
 </div>
 
@@ -1414,50 +1443,93 @@ window.addEventListener('scroll',()=>btt.classList.toggle('show',window.scrollY>
 // ── PREVENT img drag ──
 document.querySelectorAll('img').forEach(i=>i.addEventListener('dragstart',e=>e.preventDefault()));
 
-// ── PROJECT LIGHTBOX (mobile) ──
+// ── MOBILE PROJECT CAROUSEL + LIGHTBOX ──
 (function(){
-  const items=[...document.querySelectorAll('.proj-item')].map(el=>({
+  const mob=()=>window.innerWidth<=768;
+  const grid=document.querySelector('#portfolio .proj-grid');
+  const projItems=grid?[...grid.querySelectorAll('.proj-item')]:[];
+  if(!projItems.length)return;
+
+  const data=projItems.map(el=>({
     src:el.querySelector('img').src,
     cat:(el.querySelector('.proj-cat')||{}).textContent||'',
     name:(el.querySelector('.proj-name')||{}).textContent||''
   }));
-  let idx=0;
+
+  let cur=0;
+
+  /* ── Inject carousel nav (prev / dots / next) ── */
+  const nav=document.createElement('div');
+  nav.className='proj-carousel-nav';
+  const prevBtn=document.createElement('button');prevBtn.className='proj-carousel-btn';prevBtn.innerHTML='&#8249;';
+  const nextBtn=document.createElement('button');nextBtn.className='proj-carousel-btn';nextBtn.innerHTML='&#8250;';
+  const dotsRow=document.createElement('div');dotsRow.className='proj-dots-row';
+  data.forEach((_,i)=>{const d=document.createElement('button');d.className='proj-dot';d.addEventListener('click',()=>goTo(i));dotsRow.appendChild(d);});
+  nav.appendChild(prevBtn);nav.appendChild(dotsRow);nav.appendChild(nextBtn);
+  grid.parentNode.insertBefore(nav,grid.nextSibling);
+  const dots=[...dotsRow.querySelectorAll('.proj-dot')];
+
+  /* Slide info strip below carousel */
+  const info=document.createElement('div');info.className='proj-slide-info';
+  const infoCat=document.createElement('div');infoCat.className='proj-slide-cat';
+  const infoName=document.createElement('div');infoName.className='proj-slide-name';
+  info.appendChild(infoCat);info.appendChild(infoName);
+  nav.parentNode.insertBefore(info,nav.nextSibling);
+
+  function goTo(n){
+    projItems[cur].classList.remove('proj-active');
+    dots[cur].classList.remove('active');
+    cur=(n+data.length)%data.length;
+    projItems[cur].classList.add('proj-active');
+    dots[cur].classList.add('active');
+    infoCat.textContent=data[cur].cat;
+    infoName.textContent=data[cur].name;
+  }
+
+  function initCarousel(){
+    if(mob()){
+      nav.style.display='flex';
+      info.style.display='block';
+      projItems.forEach((el,i)=>el.classList.toggle('proj-active',i===cur));
+      dots.forEach((d,i)=>d.classList.toggle('active',i===cur));
+      infoCat.textContent=data[cur].cat;
+      infoName.textContent=data[cur].name;
+    } else {
+      nav.style.display='none';
+      info.style.display='none';
+      projItems.forEach(el=>el.classList.remove('proj-active'));
+    }
+  }
+
+  prevBtn.addEventListener('click',()=>goTo(cur-1));
+  nextBtn.addEventListener('click',()=>goTo(cur+1));
+
+  /* Swipe on carousel */
+  let ts=0;
+  grid.addEventListener('touchstart',e=>{ts=e.touches[0].clientX;},{passive:true});
+  grid.addEventListener('touchend',e=>{
+    if(!mob())return;
+    const dx=e.changedTouches[0].clientX-ts;
+    if(Math.abs(dx)>50)goTo(dx<0?cur+1:cur-1);
+  });
+
+  /* Tap carousel image → open lightbox ── */
   const plb=document.getElementById('proj-lightbox');
   const plbImg=document.getElementById('plb-img');
   const plbCat=document.getElementById('plb-cat');
   const plbName=document.getElementById('plb-name');
-  const plbCnt=document.getElementById('plb-counter');
-  function show(){
-    plbImg.src=items[idx].src;
-    plbCat.textContent=items[idx].cat;
-    plbName.textContent=items[idx].name;
-    plbCnt.textContent=(idx+1)+' / '+items.length;
-  }
-  function open(i){idx=i;show();plb.classList.add('open');document.body.style.overflow='hidden';}
-  function close(){plb.classList.remove('open');document.body.style.overflow='';}
-  document.getElementById('plb-close').addEventListener('click',close);
-  document.getElementById('plb-prev').addEventListener('click',()=>{idx=(idx-1+items.length)%items.length;show();});
-  document.getElementById('plb-next').addEventListener('click',()=>{idx=(idx+1)%items.length;show();});
-  document.querySelectorAll('.proj-item').forEach((el,i)=>{
-    el.addEventListener('click',()=>{
-      if(window.innerWidth<=768)open(i);
-    });
-  });
-  // Swipe support
-  let tx=0;
-  plb.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
-  plb.addEventListener('touchend',e=>{
-    const dx=e.changedTouches[0].clientX-tx;
-    if(Math.abs(dx)>50){idx=dx<0?(idx+1)%items.length:(idx-1+items.length)%items.length;show();}
-  });
-  document.addEventListener('keydown',e=>{
-    if(!plb.classList.contains('open'))return;
-    if(e.key==='Escape')close();
-    if(e.key==='ArrowLeft'){idx=(idx-1+items.length)%items.length;show();}
-    if(e.key==='ArrowRight'){idx=(idx+1)%items.length;show();}
-  });
-  // Ensure close button works on mobile (reinforce with touch listener)
-  document.getElementById('plb-close').addEventListener('touchend',e=>{e.preventDefault();close();},{passive:false});
+  let plbIdx=0;
+  function plbShow(){plbImg.src=data[plbIdx].src;plbCat.textContent=data[plbIdx].cat;plbName.textContent=data[plbIdx].name;}
+  function plbOpen(i){plbIdx=i;plbShow();plb.style.display='flex';document.body.style.overflow='hidden';}
+  function plbClose(){plb.style.display='none';document.body.style.overflow='';}
+  document.getElementById('plb-close').addEventListener('click',plbClose);
+  document.getElementById('plb-close').addEventListener('touchend',e=>{e.preventDefault();plbClose();},{passive:false});
+  document.getElementById('plb-prev').addEventListener('click',()=>{plbIdx=(plbIdx-1+data.length)%data.length;plbShow();});
+  document.getElementById('plb-next').addEventListener('click',()=>{plbIdx=(plbIdx+1)%data.length;plbShow();});
+  projItems.forEach((el,i)=>el.addEventListener('click',()=>{if(mob())plbOpen(cur);}));
+
+  initCarousel();
+  window.addEventListener('resize',initCarousel);
 })();
 
 // ── HERO VIDEO: force play on all browsers/iOS ──
