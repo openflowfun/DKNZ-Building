@@ -469,12 +469,17 @@ footer{background:var(--dark);padding:80px 0 0}
   .hero-l{padding:80px 24px 60px}
   .hero-logo{display:none}
   .ab-inner,.svc-inner,.proj-inner,.proc-inner,.stats-inner,.tst-inner{padding:0 20px}
-  #about{padding:80px 0}
-  .ab-top{grid-template-columns:1fr;gap:32px}
-  .ab-top{grid-template-columns:1fr 1fr;gap:16px}
-  .ab-left{order:1}
-  .ab-right-num{order:2;align-items:center;text-align:center}
+  #about{padding:44px 0}
+  .ab-top{grid-template-columns:1fr 1fr;column-gap:16px;row-gap:48px;margin-bottom:20px}
+  .ab-left{order:1;padding:20px 0}
+  .ab-right-num{order:2;align-items:center;text-align:center;padding:20px 0}
   .ab-right{order:3;grid-column:1/-1}
+  @keyframes electricFlare{0%,100%{opacity:1}}
+  @keyframes decadeFloat{0%,100%{transform:none}}
+  @keyframes electricScan{0%,100%{clip-path:inset(0 100% 0 0);opacity:0}}
+  @keyframes electricScanV{0%,100%{clip-path:inset(100% 0 0 0);opacity:0}}
+  .ab-decade{animation:none!important}
+  .ab-decade::after,.ab-decade::before{animation:none!important;opacity:0!important}
   .ab-right-num .ab-decade-lbl{flex-direction:row;justify-content:center}
   .ab-decade{font-size:clamp(3rem,18vw,7rem);text-align:center}
   .ab-right h2{font-size:1.55rem;line-height:1.1}
@@ -657,8 +662,8 @@ footer{background:var(--dark);padding:80px 0 0}
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="#about">About Us</a></li>
-      <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Projects</a></li>
+      <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -671,8 +676,8 @@ footer{background:var(--dark);padding:80px 0 0}
 <div id="mmenu">
   <button class="ham-close" onclick="closeMenu()">×</button>
   <a href="#about" onclick="closeMenu()">About Us</a>
-  <a href="#services" onclick="closeMenu()">Services</a>
   <a href="#portfolio" onclick="closeMenu()">Projects</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
   <a href="#process" onclick="Process">Process</a>
   <a href="#testimonials" onclick="closeMenu()">Reviews</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
