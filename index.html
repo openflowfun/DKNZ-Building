@@ -129,29 +129,37 @@ body.hov-img #cur-label{opacity:1}
 
 /* ─── DECADE: SCANNING ELECTRICITY ─── */
 
-/* The bright scan beam travels from left → right using clip-path inset */
+/* Horizontal beam: left → right */
 @keyframes electricScan{
-  /* beam enters from the left */
   0%   {clip-path:inset(0 97% 0 0 round 2px);opacity:1}
-  /* beam sweeps across to the right */
-  78%  {clip-path:inset(0 0 0 97% round 2px);opacity:1}
-  /* beam exits, brief pause at right edge */
-  82%  {clip-path:inset(0 0 0 97% round 2px);opacity:0}
-  /* instant reset to left, hidden */
-  83%  {clip-path:inset(0 97% 0 0 round 2px);opacity:0}
-  /* pause before next sweep */
+  34%  {clip-path:inset(0 0 0 97% round 2px);opacity:1}
+  38%  {clip-path:inset(0 0 0 97% round 2px);opacity:0}
+  39%  {clip-path:inset(0 97% 0 0 round 2px);opacity:0}
   100% {clip-path:inset(0 97% 0 0 round 2px);opacity:0}
 }
 
-/* Base text flares briefly when beam completes its run */
+/* Vertical beam: bottom → top */
+@keyframes electricScanV{
+  0%   {clip-path:inset(97% 0 0 0 round 2px);opacity:0}
+  49%  {clip-path:inset(97% 0 0 0 round 2px);opacity:0}
+  50%  {clip-path:inset(97% 0 0 0 round 2px);opacity:1}
+  84%  {clip-path:inset(0 0 97% 0 round 2px);opacity:1}
+  88%  {clip-path:inset(0 0 97% 0 round 2px);opacity:0}
+  89%  {clip-path:inset(97% 0 0 0 round 2px);opacity:0}
+  100% {clip-path:inset(97% 0 0 0 round 2px);opacity:0}
+}
+
+/* Base text flares at end of each beam pass */
 @keyframes electricFlare{
-  0%,75%,100%{-webkit-text-stroke:2px rgba(60,175,71,.3);text-shadow:none}
-  /* dropout just before flare */
-  78%{-webkit-text-stroke:1px rgba(60,175,71,.07);text-shadow:none}
-  /* surge */
-  81%{-webkit-text-stroke:4px rgba(147,255,170,.95);text-shadow:0 0 20px #3caf47,0 0 45px #3caf47,0 0 90px rgba(60,175,71,.7),0 0 140px rgba(60,175,71,.3)}
-  /* settle */
-  87%{-webkit-text-stroke:2px rgba(60,175,71,.3);text-shadow:0 0 8px rgba(60,175,71,.2)}
+  /* horizontal flash ~36% */
+  0%,30%,44%,80%,94%,100%{-webkit-text-stroke:2px rgba(60,175,71,.3);text-shadow:none}
+  34%{-webkit-text-stroke:1px rgba(60,175,71,.07);text-shadow:none}
+  37%{-webkit-text-stroke:4px rgba(147,255,170,.95);text-shadow:0 0 20px #3caf47,0 0 45px #3caf47,0 0 90px rgba(60,175,71,.7),0 0 140px rgba(60,175,71,.3)}
+  42%{-webkit-text-stroke:2px rgba(60,175,71,.3);text-shadow:0 0 8px rgba(60,175,71,.2)}
+  /* vertical flash ~86% */
+  83%{-webkit-text-stroke:1px rgba(60,175,71,.07);text-shadow:none}
+  86%{-webkit-text-stroke:4px rgba(147,255,170,.95);text-shadow:0 0 20px #3caf47,0 0 45px #3caf47,0 0 90px rgba(60,175,71,.7),0 0 140px rgba(60,175,71,.3)}
+  91%{-webkit-text-stroke:2px rgba(60,175,71,.3);text-shadow:0 0 8px rgba(60,175,71,.2)}
 }
 
 /* Gentle float – starts after first scan completes */
@@ -181,7 +189,7 @@ body.hov-img #cur-label{opacity:1}
   position:relative;overflow:visible;
 }
 
-/* Scanning beam overlay: same text, bright stroke + glow, clipped to a narrow strip */
+/* Horizontal scan overlay */
 .ab-decade::after{
   content:'10+';
   position:absolute;inset:0;
@@ -199,14 +207,35 @@ body.hov-img #cur-label{opacity:1}
   clip-path:inset(0 97% 0 0);
   opacity:0;
 }
+/* Vertical scan overlay */
+.ab-decade::before{
+  content:'10+';
+  position:absolute;inset:0;
+  font-family:'Barlow Condensed',sans-serif;font-weight:900;
+  font-size:inherit;line-height:inherit;letter-spacing:inherit;
+  color:transparent;
+  -webkit-text-stroke:5px #fff;
+  text-shadow:
+    0 0 12px #3caf47,
+    0 0 28px #3caf47,
+    0 0 55px rgba(60,175,71,.85),
+    0 0 90px rgba(60,175,71,.45),
+    0 0 140px rgba(60,175,71,.2);
+  pointer-events:none;
+  clip-path:inset(97% 0 0 0);
+  opacity:0;
+}
 
 /* Triggered by scroll reveal (.ab-left gets .in via IntersectionObserver) */
 .ab-left.in .ab-decade{
-  animation:electricFlare 2.8s cubic-bezier(.4,0,.6,1) .4s infinite,
+  animation:electricFlare 4.8s cubic-bezier(.4,0,.6,1) .4s infinite,
             decadeFloat 5.5s ease-in-out 3s infinite;
 }
 .ab-left.in .ab-decade::after{
-  animation:electricScan 2.8s cubic-bezier(.4,0,.6,1) .4s infinite;
+  animation:electricScan 4.8s cubic-bezier(.4,0,.6,1) .4s infinite;
+}
+.ab-left.in .ab-decade::before{
+  animation:electricScanV 4.8s cubic-bezier(.4,0,.6,1) .4s infinite;
 }
 .ab-right h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.4rem,4.5vw,4.2rem);line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:28px}
 .ab-right h2 em{color:var(--green);font-style:normal}
@@ -610,7 +639,7 @@ footer{background:var(--dark);padding:80px 0 0}
   </div>
   <div class="nav-right">
     <ul class="nav-links">
-      <li><a href="#about">Our Story</a></li>
+      <li><a href="#about">About Us</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#portfolio">Projects</a></li>
       <li><a href="#process">Process</a></li>
@@ -724,13 +753,13 @@ footer{background:var(--dark);padding:80px 0 0}
         <div class="ab-decade">10+</div>
       </div>
       <div class="ab-right sr-r">
-        <h2>Crafting Excellence, Building Trust -<br/>One Project at a Time.</h2>
-        <p>We are <strong>licensed builders</strong> and have been building in Christchurch for 10 years. With vast experience in large multi-unit new builds and <strong>earthquake repairs</strong>, we bring specialist knowledge to every project.</p>
-        <p>We complete all jobs <strong>on time, within budget</strong> and will accelerate programmes when required. Owner <strong>Dave</strong> leads every project personally - from Banks Peninsula to Waimakariri.</p>
+        <h2>Crafting Excellence,<br/><em>Building Trust</em> —<br/>One Project at a Time.</h2>
+        <p>We are a licensed building company with over 10 years of experience delivering high-quality construction across Christchurch and surrounding areas.</p>
+        <p>Specialising in new builds and complex earthquake repairs, we bring expert knowledge, exceptional attention to detail, and proven craftsmanship to every project.</p>
         <div class="ab-tags">
           <span class="ab-tag g">LBP Certified</span>
           <span class="ab-tag g">Master Builders</span>
-          <span class="ab-tag">ID Verified</span>
+
           <span class="ab-tag">Christchurch Local</span>
           <span class="ab-tag">On-Time Guarantee</span>
           <span class="ab-tag">On-Budget Commitment</span>
@@ -1151,7 +1180,7 @@ footer{background:var(--dark);padding:80px 0 0}
         </div>
         <div>
           <div class="con-dt-lbl">Phone</div>
-          <div class="con-dt-val"><a href="tel:+6421000000" style="color:var(--gl)">Call Dave Directly</a></div>
+          <div class="con-dt-val"><a href="tel:+6421000000" style="color:var(--gl)">021 000 000</a></div>
         </div>
       </div>
       <div class="con-row">
@@ -1226,7 +1255,7 @@ footer{background:var(--dark);padding:80px 0 0}
     <div class="sr d2">
       <div class="ft-head">Quick Links</div>
       <ul class="ft-links">
-        <li><a href="#about">Our Story</a></li>
+        <li><a href="#about">About Us</a></li>
         <li><a href="#portfolio">Projects</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#stats">Why DKNZ</a></li>
