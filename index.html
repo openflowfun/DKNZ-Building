@@ -474,12 +474,15 @@ footer{background:var(--dark);padding:80px 0 0}
   .ab-left{order:1;padding:20px 0}
   .ab-right-num{order:2;align-items:center;text-align:center;padding:20px 0}
   .ab-right{order:3;grid-column:1/-1}
-  @keyframes electricFlare{0%,100%{opacity:1}}
-  @keyframes decadeFloat{0%,100%{transform:none}}
-  @keyframes electricScan{0%,100%{clip-path:inset(0 100% 0 0);opacity:0}}
-  @keyframes electricScanV{0%,100%{clip-path:inset(100% 0 0 0);opacity:0}}
-  .ab-decade{animation:none!important}
-  .ab-decade::after,.ab-decade::before{animation:none!important;opacity:0!important}
+  .ab-decade,
+  .ab-left.in .ab-decade,
+  .ab-right-num.in .ab-decade{animation:none!important;transform:none!important}
+  .ab-decade::after,
+  .ab-decade::before,
+  .ab-left.in .ab-decade::after,
+  .ab-left.in .ab-decade::before,
+  .ab-right-num.in .ab-decade::after,
+  .ab-right-num.in .ab-decade::before{animation:none!important;opacity:0!important}
   .ab-right-num .ab-decade-lbl{flex-direction:row;justify-content:center}
   .ab-decade{font-size:clamp(3rem,18vw,7rem);text-align:center}
   .ab-right h2{font-size:1.55rem;line-height:1.1}
