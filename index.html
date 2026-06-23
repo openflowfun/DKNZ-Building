@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>DKNZ Building &amp; Construction – Licensed Builders, Christchurch</title>
-<meta name="description" content="DKNZ Building & Construction – Licensed builders in Christchurch with 10+ years experience. New builds, renovations, earthquake repairs, kitchens & more across Canterbury."/>
+<meta name="description" content="DKNZ Building & Construction – Licensed builders in Christchurch with 20+ years experience. New builds, renovations, earthquake repairs, kitchens & more across Canterbury."/>
 <link rel="icon" href="Images/logo.png"/>
 <link rel="apple-touch-icon" href="Images/logo.png"/>
 <script type="application/ld+json">
@@ -124,8 +124,9 @@ body.hov-img #cur-label{opacity:1}
 /* ─── ABOUT ─── */
 #about{padding:130px 0 80px}
 .ab-inner{max-width:1280px;margin:0 auto;padding:0 48px}
-.ab-top{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:center;margin-bottom:70px}
+.ab-top{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:56px;align-items:center;margin-bottom:70px}
 .ab-left{}
+.ab-right-num{display:flex;flex-direction:column;align-items:flex-end;text-align:right}
 
 /* ─── DECADE: SCANNING ELECTRICITY ─── */
 
@@ -182,14 +183,14 @@ body.hov-img #cur-label{opacity:1}
 /* Base: dim green outline always visible */
 .ab-decade{
   font-family:'Barlow Condensed',sans-serif;font-weight:900;
-  font-size:clamp(8rem,21vw,26rem);
+  font-size:clamp(4.5rem,16vw,20rem);
   line-height:.85;letter-spacing:-.02em;margin-bottom:-16px;
   color:transparent;
   -webkit-text-stroke:2px rgba(60,175,71,.3);
   position:relative;overflow:visible;
 }
 
-/* Horizontal scan overlay */
+/* Horizontal scan overlay — 10+ Canterbury */
 .ab-decade::after{
   content:'10+';
   position:absolute;inset:0;
@@ -197,17 +198,10 @@ body.hov-img #cur-label{opacity:1}
   font-size:inherit;line-height:inherit;letter-spacing:inherit;
   color:transparent;
   -webkit-text-stroke:5px #fff;
-  text-shadow:
-    0 0 12px #3caf47,
-    0 0 28px #3caf47,
-    0 0 55px rgba(60,175,71,.85),
-    0 0 90px rgba(60,175,71,.45),
-    0 0 140px rgba(60,175,71,.2);
-  pointer-events:none;
-  clip-path:inset(0 97% 0 0);
-  opacity:0;
+  text-shadow:0 0 12px #3caf47,0 0 28px #3caf47,0 0 55px rgba(60,175,71,.85),0 0 90px rgba(60,175,71,.45),0 0 140px rgba(60,175,71,.2);
+  pointer-events:none;clip-path:inset(0 97% 0 0);opacity:0;
 }
-/* Vertical scan overlay */
+/* Vertical scan overlay — 10+ Canterbury */
 .ab-decade::before{
   content:'10+';
   position:absolute;inset:0;
@@ -215,28 +209,34 @@ body.hov-img #cur-label{opacity:1}
   font-size:inherit;line-height:inherit;letter-spacing:inherit;
   color:transparent;
   -webkit-text-stroke:5px #fff;
-  text-shadow:
-    0 0 12px #3caf47,
-    0 0 28px #3caf47,
-    0 0 55px rgba(60,175,71,.85),
-    0 0 90px rgba(60,175,71,.45),
-    0 0 140px rgba(60,175,71,.2);
-  pointer-events:none;
-  clip-path:inset(97% 0 0 0);
-  opacity:0;
+  text-shadow:0 0 12px #3caf47,0 0 28px #3caf47,0 0 55px rgba(60,175,71,.85),0 0 90px rgba(60,175,71,.45),0 0 140px rgba(60,175,71,.2);
+  pointer-events:none;clip-path:inset(97% 0 0 0);opacity:0;
 }
 
-/* Triggered by scroll reveal (.ab-left gets .in via IntersectionObserver) */
+/* 20+ Industry — alt overlay (same glow, different content) */
+.ab-decade-alt::after{content:'20+'!important}
+.ab-decade-alt::before{content:'20+'!important}
+
+/* Triggered — 10+ Canterbury */
 .ab-left.in .ab-decade{
   animation:electricFlare 4.8s cubic-bezier(.4,0,.6,1) .4s infinite,
             decadeFloat 5.5s ease-in-out 3s infinite;
 }
-.ab-left.in .ab-decade::after{
-  animation:electricScan 4.8s cubic-bezier(.4,0,.6,1) .4s infinite;
+.ab-left.in .ab-decade::after{animation:electricScan 4.8s cubic-bezier(.4,0,.6,1) .4s infinite}
+.ab-left.in .ab-decade::before{animation:electricScanV 4.8s cubic-bezier(.4,0,.6,1) .4s infinite}
+
+/* Triggered — 20+ Industry (1.6s offset so they don't sync) */
+.ab-right-num.in .ab-decade{
+  animation:electricFlare 4.8s cubic-bezier(.4,0,.6,1) 2s infinite,
+            decadeFloat 5.5s ease-in-out 4.6s infinite;
 }
-.ab-left.in .ab-decade::before{
-  animation:electricScanV 4.8s cubic-bezier(.4,0,.6,1) .4s infinite;
-}
+.ab-right-num.in .ab-decade::after{animation:electricScan 4.8s cubic-bezier(.4,0,.6,1) 2s infinite}
+.ab-right-num.in .ab-decade::before{animation:electricScanV 4.8s cubic-bezier(.4,0,.6,1) 2s infinite}
+
+/* Right-side label: line flips to right */
+.ab-right-num .ab-decade-lbl{flex-direction:row-reverse;justify-content:flex-start}
+.ab-right-num .ab-decade-lbl::before{transform-origin:right}
+.ab-right-num.in .ab-decade-lbl::before{transform:scaleX(1)}
 .ab-right h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.4rem,4.5vw,4.2rem);line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:28px}
 .ab-right h2 em{color:var(--green);font-style:normal}
 .ab-right p{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:520px;margin-bottom:14px}
@@ -272,23 +272,40 @@ body.hov-img #cur-label{opacity:1}
 .svc-desc{font-size:.78rem;color:var(--muted);line-height:1.6;max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .4s,color .4s;opacity:0}
 .svc-cell:hover .svc-desc{max-height:80px;opacity:1;color:rgba(255,255,255,.65)}
 
-/* ─── PROJECTS ─── */
-#portfolio{padding:100px 0}
+/* ─── PROJECTS: FULLSCREEN PEEK CAROUSEL ─── */
+#portfolio{padding:100px 0 0;background:var(--cream)}
 .proj-inner{max-width:1280px;margin:0 auto;padding:0 48px}
 .proj-head{margin-bottom:56px}
 .proj-head h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.4rem,4vw,3.8rem);line-height:.95;text-transform:uppercase;letter-spacing:-.01em}
 .proj-head p{font-size:1rem;color:var(--muted);margin-top:14px;max-width:480px;line-height:1.7}
-.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.proj-item{position:relative;overflow:hidden;cursor:pointer}
-.proj-item:nth-child(1){grid-row:span 2}
-.proj-item:nth-child(4){grid-row:span 2}
-.proj-item img{width:100%;height:100%;object-fit:cover;min-height:260px;transition:transform .7s cubic-bezier(.22,1,.36,1)}
-.proj-item:hover img{transform:scale(1.06)}
-.proj-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,47,20,.92) 0%,rgba(14,47,20,.2) 50%,transparent 100%);opacity:0;transition:opacity .4s;display:flex;flex-direction:column;justify-content:flex-end;padding:28px 24px}
-.proj-item:hover .proj-overlay{opacity:1}
-.proj-cat{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gl);font-weight:700;margin-bottom:6px}
-.proj-name{font-family:'Barlow Condensed',sans-serif;font-size:1.4rem;font-weight:800;text-transform:uppercase;color:#fff;letter-spacing:.02em;line-height:1.1}
-.proj-hint{font-size:.72rem;color:rgba(255,255,255,.5);margin-top:8px}
+
+/* Stage */
+.pf-stage{position:relative;width:100%;height:80vh;overflow:hidden;background:#0c0c0c;cursor:default}
+.pf-slide{position:absolute;inset:0;transition:transform .65s cubic-bezier(.25,1,.5,1),opacity .65s ease;will-change:transform}
+.pf-slide img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;user-select:none}
+.pf-slide::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.52);transition:opacity .65s ease;pointer-events:none}
+.pf-slide.pf-active::after{opacity:0}
+.pf-slide.pf-prev{transform:translateX(-75%);z-index:1}
+.pf-slide.pf-active{transform:translateX(0);z-index:2}
+.pf-slide.pf-next{transform:translateX(75%);z-index:1}
+.pf-slide.pf-hidden{opacity:0;pointer-events:none;z-index:0}
+
+/* Arrows */
+.pf-arr{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:2.2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .2s;line-height:1}
+.pf-arr:hover{background:var(--green);transform:translateY(-50%) scale(1.06)}
+.pf-arr-l{left:24px}
+.pf-arr-r{right:24px}
+
+/* Info bar */
+.pf-info-bar{position:absolute;bottom:0;left:0;right:0;z-index:5;padding:32px 40px;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,transparent 100%);pointer-events:none;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.pf-info-left{min-width:0}
+.pf-info-cat{font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gl);font-weight:700;margin-bottom:5px}
+.pf-info-name{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;color:#fff;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Dots */
+.pf-dot-bar{display:flex;gap:8px;align-items:center;flex-shrink:0;pointer-events:auto}
+.pf-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);border:none;cursor:pointer;padding:0;transition:background .2s,transform .2s;-webkit-tap-highlight-color:transparent}
+.pf-dot.active{background:var(--green);transform:scale(1.4)}
 
 /* ─── PROCESS ─── */
 #process{padding:120px 0;background:var(--gd)}
@@ -452,13 +469,19 @@ footer{background:var(--dark);padding:80px 0 0}
   .ab-inner,.svc-inner,.proj-inner,.proc-inner,.stats-inner,.tst-inner{padding:0 20px}
   #about{padding:80px 0}
   .ab-top{grid-template-columns:1fr;gap:32px}
-  .ab-decade{font-size:clamp(7rem,24vw,10rem);text-align:center}
+  .ab-top{grid-template-columns:1fr 1fr;gap:16px}
+  .ab-left{order:1}
+  .ab-right-num{order:2;align-items:flex-start;text-align:left}
+  .ab-right{order:3;grid-column:1/-1}
+  .ab-right-num .ab-decade-lbl{flex-direction:row;justify-content:flex-start}
+  .ab-decade{font-size:clamp(3rem,18vw,7rem);text-align:center}
   .ab-decade-lbl{justify-content:center}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .svc-cell:nth-child(3n){border-right:1px solid var(--border)}
   .svc-cell:nth-child(2n){border-right:none}
-  .proj-grid{grid-template-columns:1fr 1fr}
-  .proj-item:nth-child(1),.proj-item:nth-child(4){grid-row:auto}
+  .pf-stage{height:72vw}
+  .pf-slide.pf-prev{transform:translateX(-100%)}
+  .pf-slide.pf-next{transform:translateX(100%)}
   .proc-steps{grid-template-columns:1fr}
   .stats-grid{grid-template-columns:1fr 1fr}
   .tst-text{font-size:1.4rem}
@@ -484,8 +507,11 @@ footer{background:var(--dark);padding:80px 0 0}
 }
 @media(max-width:480px){
   .svc-grid{grid-template-columns:1fr 1fr}
-  .proj-grid{grid-template-columns:1fr}
-  .proj-item:nth-child(1),.proj-item:nth-child(4){grid-row:auto}
+  .pf-info-bar{padding:16px}
+  .pf-info-name{font-size:1.1rem}
+  .pf-arr{width:42px;height:42px;font-size:1.6rem}
+  .pf-arr-l{left:10px}
+  .pf-arr-r{right:10px}
   .stats-grid{grid-template-columns:1fr 1fr}
   .stat-box{padding:22px 12px}
   .stat-n{font-size:clamp(1.8rem,8.5vw,2.6rem);white-space:nowrap}
@@ -564,20 +590,7 @@ footer{background:var(--dark);padding:80px 0 0}
   /* ── Nav: subtle dark gradient hides logo white-box on transparent nav ── */
   #nav:not(.scrolled) .nav-left{background:linear-gradient(90deg,rgba(0,0,0,.28) 0%,transparent 75%)}
 
-  /* ── Projects: single-image carousel on mobile ── */
-  #portfolio .proj-grid{display:block;position:relative;overflow:visible}
-  #portfolio .proj-item{display:none;min-height:64vw;border-radius:0;grid-row:auto!important}
-  #portfolio .proj-item img{min-height:64vw;max-height:72vw}
-  #portfolio .proj-item.proj-active{display:block}
-  .proj-carousel-nav{display:flex;align-items:center;justify-content:space-between;margin-top:14px;gap:8px}
-  .proj-carousel-btn{width:44px;height:44px;background:var(--dark);border:none;color:#fff;font-size:1.6rem;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:background .2s}
-  .proj-carousel-btn:active{background:var(--green)}
-  .proj-dots-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center;flex:1}
-  .proj-dot{width:7px;height:7px;border-radius:50%;background:rgba(12,14,11,.18);border:none;cursor:pointer;padding:0;touch-action:manipulation;transition:background .2s,transform .2s;-webkit-tap-highlight-color:transparent}
-  .proj-dot.active{background:var(--green);transform:scale(1.4)}
-  .proj-slide-info{padding:10px 0 4px;font-family:'Barlow Condensed',sans-serif}
-  .proj-slide-cat{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:2px}
-  .proj-slide-name{font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--dark)}
+  /* ── Projects: mobile adjustments handled in media blocks above ── */
 
   /* ── Process: clean vertical timeline on mobile ── */
   .proc-steps{gap:1px;background:rgba(255,255,255,.07)}
@@ -667,7 +680,7 @@ footer{background:var(--dark);padding:80px 0 0}
   <div class="hero-l">
     <div class="hero-eye">Licensed Building Practitioner &nbsp;·&nbsp; Master Builders Association</div>
     <h1 class="hero-h1">BUILDING<br/><em>CHRISTCHURCH'S</em><br/>FINEST</h1>
-    <p class="hero-sub">10+ years crafting exceptional homes across Canterbury - on time, on budget, every time.</p>
+    <p class="hero-sub">20+ years crafting exceptional homes across Canterbury - on time, on budget, every time.</p>
     <div class="hero-btns">
       <button class="btn-g" onclick="openModal()">
         Get a Free Quote
@@ -677,7 +690,7 @@ footer{background:var(--dark);padding:80px 0 0}
     </div>
     <img src="Images/logo.png" alt="DKNZ" class="hero-logo"/>
     <div class="hero-stat-strip">
-      <div class="hss-item"><div class="hss-num">10+</div><div class="hss-lbl">Years Experience</div></div>
+      <div class="hss-item"><div class="hss-num">20+</div><div class="hss-lbl">Years Experience</div></div>
       <div class="hss-item"><div class="hss-num">50+</div><div class="hss-lbl">Jobs Done</div></div>
       <div class="hss-item"><div class="hss-num">5.0★</div><div class="hss-lbl">Verified Rating</div></div>
       <div class="hss-item"><div class="hss-num">100%</div><div class="hss-lbl">On Budget</div></div>
@@ -749,13 +762,13 @@ footer{background:var(--dark);padding:80px 0 0}
   <div class="ab-inner">
     <div class="ab-top">
       <div class="ab-left sr-l">
-        <div class="ab-decade-lbl">Years in Christchurch</div>
+        <div class="ab-decade-lbl">Years in Canterbury</div>
         <div class="ab-decade">10+</div>
       </div>
-      <div class="ab-right sr-r">
+      <div class="ab-right sr">
         <h2>Crafting Excellence,<br/><em>Building Trust</em> —<br/>One Project at a Time.</h2>
-        <p>We are a licensed building company with over 10 years of experience delivering high-quality construction across Christchurch and surrounding areas.</p>
-        <p>Specialising in new builds and complex earthquake repairs, we bring expert knowledge, exceptional attention to detail, and proven craftsmanship to every project.</p>
+        <p>We are a licensed building company with 20+ years of experience in the construction industry, including over 10 years delivering high-quality projects across Christchurch and surrounding areas. Specialising in new builds, renovations, house levelling, foundation replacements, and complex earthquake repairs, we bring expert knowledge, exceptional attention to detail, and proven craftsmanship to every project.</p>
+        <p>From high-end kitchens and bathrooms to roofing, structural concreting, tiling, waterproofing, painting, and full interior/exterior finishes, we provide a complete end-to-end building service. Owner Dave personally leads every project with a strong focus on quality workmanship, efficient timelines, and competitive pricing — all backed by full insurance cover — taking the pressure off you while saving time and money.</p>
         <div class="ab-tags">
           <span class="ab-tag g">LBP Certified</span>
           <span class="ab-tag g">Master Builders</span>
@@ -767,6 +780,10 @@ footer{background:var(--dark);padding:80px 0 0}
           <span class="ab-tag">Selwyn</span>
           <span class="ab-tag">Waimakariri</span>
         </div>
+      </div>
+      <div class="ab-right-num sr-r">
+        <div class="ab-decade-lbl">Years in Industry</div>
+        <div class="ab-decade ab-decade-alt">20+</div>
       </div>
     </div>
     <div class="ab-photo sr d2">
@@ -917,78 +934,50 @@ footer{background:var(--dark);padding:80px 0 0}
 </section>
 
 <!-- ═══ PROJECTS ═══ -->
-<section id="portfolio" style="padding:100px 0;background:var(--cream)">
+<section id="portfolio">
   <div class="proj-inner">
     <div class="proj-head sr">
       <div class="svc-label">Our Work</div>
-      <h2 class="proj-head h2" style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.4rem,4vw,3.8rem);line-height:.95;text-transform:uppercase;letter-spacing:-.01em">Real Projects.<br/>Real Results.</h2>
-      <p>Verified work from our Builderscrack profile - every photo a real DKNZ project in Canterbury.</p>
+      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.4rem,4vw,3.8rem);line-height:.95;text-transform:uppercase;letter-spacing:-.01em">Real Projects.<br/>Real Results.</h2>
+      <p>Verified work from our Builderscrack profile — every photo a real DKNZ project in Canterbury.</p>
     </div>
-    <div class="proj-grid">
+  </div>
+  <div class="pf-stage" id="pfStage">
 
-      <div class="proj-item sr-l d1">
-        <img src="https://builderscrack.co.nz/data-files/imagedata/1738/1738491/h900-rN-wf-a400000.jpg" alt="Cedar timber cladding Christchurch" loading="lazy" style="min-height:380px"/>
-        <div class="proj-overlay">
-          <div class="proj-cat">Exterior · Timber</div>
-          <div class="proj-name">Cedar Timber Cladding</div>
-          <div class="proj-hint">Beautiful cedar cladding transforming home's exterior</div>
-        </div>
+    <div class="pf-slide" data-cat="Interior · Storage" data-name="Attic Ladder Installation">
+      <img src="Images/proj-1.jpg" alt="Attic ladder installation clean garage Christchurch" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Interior · Timber" data-name="Cedar Ceiling Interior">
+      <img src="Images/proj-2.jpg" alt="Cedar timber ceiling interior gable" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Interior · Storage" data-name="Attic Ladder – Garage Conversion">
+      <img src="Images/proj-3.jpg" alt="Attic ladder garage conversion laundry" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Multi-Unit · Decking" data-name="Multi-Unit Development">
+      <img src="Images/proj-4.jpg" alt="Multi-unit development timber decking black railings" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Outdoor · Pergola" data-name="Timber Pergola & Arbour">
+      <img src="Images/proj-5.jpg" alt="Timber pergola arbour Canterbury cedar" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Outdoor · Decking" data-name="Deck Restoration">
+      <img src="Images/proj-6.jpg" alt="Deck restoration sanding balcony Christchurch" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Interior · Staircase" data-name="Grand Staircase & Flooring">
+      <img src="Images/proj-7.jpg" alt="Grand staircase carpet runner dark wood handrail" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Exterior · Renovation" data-name="Home Extension & Timber Deck">
+      <img src="Images/proj-8.jpg" alt="Home extension corrugated roof timber deck Canterbury" loading="lazy"/>
+    </div>
+
+    <button class="pf-arr pf-arr-l" id="pfPrev">&#8249;</button>
+    <button class="pf-arr pf-arr-r" id="pfNext">&#8250;</button>
+
+    <div class="pf-info-bar">
+      <div class="pf-info-left">
+        <div class="pf-info-cat" id="pfCat"></div>
+        <div class="pf-info-name" id="pfName"></div>
       </div>
-
-      <div class="proj-item sr d2">
-        <img src="https://builderscrack.co.nz/data-files/imagedata/1738/1738490/h900-rN-wf-a400000.jpg" alt="Timber pergola Clearlite roofing" loading="lazy" style="min-height:200px"/>
-        <div class="proj-overlay">
-          <div class="proj-cat">Outdoor · Pergola</div>
-          <div class="proj-name">Timber Pergola with Clearlite Roofing</div>
-          <div class="proj-hint">99.9% UV protection for outdoor living</div>
-        </div>
-      </div>
-
-      <div class="proj-item sr-r d3">
-        <img src="https://builderscrack.co.nz/data-files/imagedata/1738/1738497/h900-rN-wf-a400000.jpg" alt="Cashmere re-roof renovation" loading="lazy" style="min-height:200px"/>
-        <div class="proj-overlay">
-          <div class="proj-cat">Roofing · Renovation</div>
-          <div class="proj-name">Cashmere Re-Roof &amp; Renovation</div>
-          <div class="proj-hint">Complete re-roofing in Cashmere suburb</div>
-        </div>
-      </div>
-
-      <div class="proj-item sr-l d2">
-        <img src="https://builderscrack.co.nz/data-files/imagedata/1738/1738493/h900-rN-wf-a400000.jpg" alt="Attic ladders storage" loading="lazy" style="min-height:200px"/>
-        <div class="proj-overlay">
-          <div class="proj-cat">Interior · Attic Access</div>
-          <div class="proj-name">Attic Ladder Installation</div>
-          <div class="proj-hint">Adding overhead storage space</div>
-        </div>
-      </div>
-
-      <div class="proj-item sr d3">
-        <img src="https://builderscrack.co.nz/data-files/imagedata/1738/1738496/h900-rN-wf-a400000.jpg" alt="Stair handrail walnut flooring" loading="lazy" style="min-height:200px"/>
-        <div class="proj-overlay">
-          <div class="proj-cat">Interior · Flooring</div>
-          <div class="proj-name">Stair Handrail &amp; Walnut Flooring</div>
-          <div class="proj-hint">Complete stair revamp with premium flooring</div>
-        </div>
-      </div>
-
-      <div class="proj-item sr-r d4" style="grid-row:span 2">
-        <img src="https://builderscrack.co.nz/data-files/imagedata/1738/1738494/h900-rN-wf-a400000.jpg" alt="Small garden pergola entrance" loading="lazy" style="min-height:440px"/>
-        <div class="proj-overlay">
-          <div class="proj-cat">Outdoor · Garden</div>
-          <div class="proj-name">Small Garden Pergola</div>
-          <div class="proj-hint">Elegant entrance way pergola feature</div>
-        </div>
-      </div>
-
-      <div class="proj-item sr d4">
-        <img src="https://builderscrack.co.nz/data-files/imagedata/1738/1738501/h900-rN-wf-a400000.jpg" alt="Decking city centre Christchurch" loading="lazy" style="min-height:200px"/>
-        <div class="proj-overlay">
-          <div class="proj-cat">Outdoor · Decking</div>
-          <div class="proj-name">Decking Install – City Centre</div>
-          <div class="proj-hint">Quality hardwood decking, central Christchurch</div>
-        </div>
-      </div>
-
+      <div class="pf-dot-bar" id="pfDotBar"></div>
     </div>
   </div>
 </section>
@@ -1180,7 +1169,7 @@ footer{background:var(--dark);padding:80px 0 0}
         </div>
         <div>
           <div class="con-dt-lbl">Phone</div>
-          <div class="con-dt-val"><a href="tel:+6421000000" style="color:var(--gl)">021 000 000</a></div>
+          <div class="con-dt-val"><a href="tel:+64220426044" style="color:var(--gl)">022 042 6044</a></div>
         </div>
       </div>
       <div class="con-row">
@@ -1189,7 +1178,7 @@ footer{background:var(--dark);padding:80px 0 0}
         </div>
         <div>
           <div class="con-dt-lbl">Location</div>
-          <div class="con-dt-val">Parklands, Christchurch 8083<br/><span style="color:rgba(255,255,255,.35);font-size:.82rem">Banks Peninsula · Selwyn · Waimakariri</span></div>
+          <div class="con-dt-val">Canterbury, New Zealand<br/><span style="color:rgba(255,255,255,.35);font-size:.82rem">Banks Peninsula · Selwyn · Waimakariri</span></div>
         </div>
       </div>
       <div class="con-row">
@@ -1245,7 +1234,7 @@ footer{background:var(--dark);padding:80px 0 0}
   <div class="ft-inner">
     <div class="ft-brand sr">
       <img src="Images/logo.png" alt="DKNZ" class="ft-logo"/>
-      <p class="ft-tagline">Licensed builders serving Christchurch, Banks Peninsula, Selwyn and Waimakariri. 10+ years of excellence. On time. On budget. Every time.</p>
+      <p class="ft-tagline">Licensed builders serving Christchurch, Banks Peninsula, Selwyn and Waimakariri. 20+ years of excellence. On time. On budget. Every time.</p>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:24px">
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:5px 12px;color:rgba(255,255,255,.35)">LBP Certified</span>
         <span style="font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,.1);padding:5px 12px;color:rgba(255,255,255,.35)">Master Builders</span>
@@ -1483,93 +1472,70 @@ window.addEventListener('scroll',()=>btt.classList.toggle('show',window.scrollY>
 // ── PREVENT img drag ──
 document.querySelectorAll('img').forEach(i=>i.addEventListener('dragstart',e=>e.preventDefault()));
 
-// ── MOBILE PROJECT CAROUSEL + LIGHTBOX ──
+// ── PROJECT PEEK CAROUSEL (desktop + mobile) ──
 (function(){
-  const mob=()=>window.innerWidth<=768;
-  const grid=document.querySelector('#portfolio .proj-grid');
-  const projItems=grid?[...grid.querySelectorAll('.proj-item')]:[];
-  if(!projItems.length)return;
-
-  const data=projItems.map(el=>({
-    src:el.querySelector('img').src,
-    cat:(el.querySelector('.proj-cat')||{}).textContent||'',
-    name:(el.querySelector('.proj-name')||{}).textContent||''
-  }));
-
+  const stage=document.getElementById('pfStage');
+  if(!stage)return;
+  const slides=[...stage.querySelectorAll('.pf-slide')];
+  const total=slides.length;
+  const dotBar=document.getElementById('pfDotBar');
+  const catEl=document.getElementById('pfCat');
+  const nameEl=document.getElementById('pfName');
   let cur=0;
 
-  /* ── Inject carousel nav (prev / dots / next) ── */
-  const nav=document.createElement('div');
-  nav.className='proj-carousel-nav';
-  const prevBtn=document.createElement('button');prevBtn.className='proj-carousel-btn';prevBtn.innerHTML='&#8249;';
-  const nextBtn=document.createElement('button');nextBtn.className='proj-carousel-btn';nextBtn.innerHTML='&#8250;';
-  const dotsRow=document.createElement('div');dotsRow.className='proj-dots-row';
-  data.forEach((_,i)=>{const d=document.createElement('button');d.className='proj-dot';d.addEventListener('click',()=>goTo(i));dotsRow.appendChild(d);});
-  nav.appendChild(prevBtn);nav.appendChild(dotsRow);nav.appendChild(nextBtn);
-  grid.parentNode.insertBefore(nav,grid.nextSibling);
-  const dots=[...dotsRow.querySelectorAll('.proj-dot')];
-
-  /* Slide info strip below carousel */
-  const info=document.createElement('div');info.className='proj-slide-info';
-  const infoCat=document.createElement('div');infoCat.className='proj-slide-cat';
-  const infoName=document.createElement('div');infoName.className='proj-slide-name';
-  info.appendChild(infoCat);info.appendChild(infoName);
-  nav.parentNode.insertBefore(info,nav.nextSibling);
+  /* Build dots */
+  slides.forEach((_,i)=>{
+    const d=document.createElement('button');
+    d.className='pf-dot';
+    d.setAttribute('aria-label','Project '+(i+1));
+    d.addEventListener('click',()=>goTo(i));
+    dotBar.appendChild(d);
+  });
+  const dots=[...dotBar.querySelectorAll('.pf-dot')];
 
   function goTo(n){
-    projItems[cur].classList.remove('proj-active');
-    dots[cur].classList.remove('active');
-    cur=(n+data.length)%data.length;
-    projItems[cur].classList.add('proj-active');
-    dots[cur].classList.add('active');
-    infoCat.textContent=data[cur].cat;
-    infoName.textContent=data[cur].name;
+    cur=(n+total)%total;
+    slides.forEach((s,i)=>{
+      const offset=((i-cur)+total)%total;
+      s.className='pf-slide';
+      if(i===cur)s.classList.add('pf-active');
+      else if(offset===1)s.classList.add('pf-next');
+      else if(offset===total-1)s.classList.add('pf-prev');
+      else s.classList.add('pf-hidden');
+    });
+    dots.forEach((d,i)=>d.classList.toggle('active',i===cur));
+    const ds=slides[cur].dataset;
+    catEl.textContent=ds.cat||'';
+    nameEl.textContent=ds.name||'';
   }
 
-  function initCarousel(){
-    if(mob()){
-      nav.style.display='flex';
-      info.style.display='block';
-      projItems.forEach((el,i)=>el.classList.toggle('proj-active',i===cur));
-      dots.forEach((d,i)=>d.classList.toggle('active',i===cur));
-      infoCat.textContent=data[cur].cat;
-      infoName.textContent=data[cur].name;
-    } else {
-      nav.style.display='none';
-      info.style.display='none';
-      projItems.forEach(el=>el.classList.remove('proj-active'));
-    }
-  }
+  document.getElementById('pfPrev').addEventListener('click',e=>{e.stopPropagation();goTo(cur-1);});
+  document.getElementById('pfNext').addEventListener('click',e=>{e.stopPropagation();goTo(cur+1);});
 
-  prevBtn.addEventListener('click',()=>goTo(cur-1));
-  nextBtn.addEventListener('click',()=>goTo(cur+1));
+  /* Swipe */
+  let tx=0;
+  stage.addEventListener('touchstart',e=>{tx=e.touches[0].clientX;},{passive:true});
+  stage.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-tx;
+    if(Math.abs(dx)>48)goTo(dx<0?cur+1:cur-1);
+  },{passive:true});
 
-  /* Swipe on carousel */
-  let ts=0;
-  grid.addEventListener('touchstart',e=>{ts=e.touches[0].clientX;},{passive:true});
-  grid.addEventListener('touchend',e=>{
-    if(!mob())return;
-    const dx=e.changedTouches[0].clientX-ts;
-    if(Math.abs(dx)>50)goTo(dx<0?cur+1:cur-1);
+  /* Click side zones on desktop */
+  stage.addEventListener('click',e=>{
+    if(e.target.closest('.pf-arr'))return;
+    const x=e.clientX-stage.getBoundingClientRect().left;
+    const w=stage.offsetWidth;
+    if(x<w*0.2)goTo(cur-1);
+    else if(x>w*0.8)goTo(cur+1);
   });
 
-  /* Tap carousel image → open lightbox ── */
-  const plb=document.getElementById('proj-lightbox');
-  const plbImg=document.getElementById('plb-img');
-  const plbCat=document.getElementById('plb-cat');
-  const plbName=document.getElementById('plb-name');
-  let plbIdx=0;
-  function plbShow(){plbImg.src=data[plbIdx].src;plbCat.textContent=data[plbIdx].cat;plbName.textContent=data[plbIdx].name;}
-  function plbOpen(i){plbIdx=i;plbShow();plb.style.display='flex';document.body.style.overflow='hidden';}
-  function plbClose(){plb.style.display='none';document.body.style.overflow='';}
-  document.getElementById('plb-close').addEventListener('click',plbClose);
-  document.getElementById('plb-close').addEventListener('touchend',e=>{e.preventDefault();plbClose();},{passive:false});
-  document.getElementById('plb-prev').addEventListener('click',()=>{plbIdx=(plbIdx-1+data.length)%data.length;plbShow();});
-  document.getElementById('plb-next').addEventListener('click',()=>{plbIdx=(plbIdx+1)%data.length;plbShow();});
-  projItems.forEach((el,i)=>el.addEventListener('click',()=>{if(mob())plbOpen(cur);}));
+  /* Auto-advance */
+  let timer=setInterval(()=>goTo(cur+1),5000);
+  stage.addEventListener('mouseenter',()=>clearInterval(timer));
+  stage.addEventListener('mouseleave',()=>{timer=setInterval(()=>goTo(cur+1),5000);});
+  stage.addEventListener('touchstart',()=>clearInterval(timer),{passive:true});
 
-  initCarousel();
-  window.addEventListener('resize',initCarousel);
+  goTo(0);
 })();
 
 // ── HERO VIDEO: force play on all browsers/iOS ──
