@@ -124,9 +124,9 @@ body.hov-img #cur-label{opacity:1}
 /* ─── ABOUT ─── */
 #about{padding:130px 0 80px}
 .ab-inner{max-width:1280px;margin:0 auto;padding:0 48px}
-.ab-top{display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:56px;align-items:center;margin-bottom:70px}
-.ab-left{}
-.ab-right-num{display:flex;flex-direction:column;align-items:flex-end;text-align:right}
+.ab-top{display:grid;grid-template-columns:0.5fr 2.2fr 0.5fr;gap:40px;align-items:center;margin-bottom:70px}
+.ab-left{display:flex;flex-direction:column;align-items:center;text-align:center}
+.ab-right-num{display:flex;flex-direction:column;align-items:center;text-align:center}
 
 /* ─── DECADE: SCANNING ELECTRICITY ─── */
 
@@ -183,7 +183,7 @@ body.hov-img #cur-label{opacity:1}
 /* Base: dim green outline always visible */
 .ab-decade{
   font-family:'Barlow Condensed',sans-serif;font-weight:900;
-  font-size:clamp(4.5rem,16vw,20rem);
+  font-size:clamp(3rem,8.5vw,9rem);
   line-height:.85;letter-spacing:-.02em;margin-bottom:-16px;
   color:transparent;
   -webkit-text-stroke:2px rgba(60,175,71,.3);
@@ -234,14 +234,16 @@ body.hov-img #cur-label{opacity:1}
 .ab-right-num.in .ab-decade::before{animation:electricScanV 4.8s cubic-bezier(.4,0,.6,1) 2s infinite}
 
 /* Right-side label: line flips to right */
-.ab-right-num .ab-decade-lbl{flex-direction:row-reverse;justify-content:flex-start}
-.ab-right-num .ab-decade-lbl::before{transform-origin:right}
+.ab-right-num .ab-decade-lbl{flex-direction:row;justify-content:center}
+.ab-right-num .ab-decade-lbl::before{transform-origin:left}
 .ab-right-num.in .ab-decade-lbl::before{transform:scaleX(1)}
-.ab-right h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.4rem,4.5vw,4.2rem);line-height:.95;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:28px}
+.ab-right{text-align:center}
+.ab-right h2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(1.5rem,2.8vw,2.2rem);line-height:1.05;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:28px}
 .ab-right h2 em{color:var(--green);font-style:normal}
-.ab-right p{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:520px;margin-bottom:14px}
+.ab-right p{font-size:1.05rem;color:var(--muted);line-height:1.75;margin-bottom:14px}
 .ab-right p strong{color:var(--dark);font-weight:600}
-.ab-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:32px}
+.ab-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:32px;justify-content:center}
+.ab-tag-break{flex-basis:100%;height:0}
 .ab-tag{font-family:'Barlow Condensed',sans-serif;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;border:1px solid var(--border);padding:6px 14px;color:var(--muted);transition:all .3s}
 .ab-tag:hover,.ab-tag.g{border-color:var(--green);color:var(--green)}
 .ab-photo{position:relative;height:420px;overflow:hidden}
@@ -445,7 +447,7 @@ footer{background:var(--dark);padding:80px 0 0}
   .svc-cell:nth-child(4n){border-right:1px solid var(--border)}
   .svc-cell:nth-child(3n){border-right:none}
   .proc-steps{grid-template-columns:repeat(2,1fr)}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-grid{grid-template-columns:repeat(3,1fr)!important}
   .pillars{grid-template-columns:1fr}
   #contact{grid-template-columns:1fr}
   .con-l,.con-r{padding:72px 40px}
@@ -471,10 +473,12 @@ footer{background:var(--dark);padding:80px 0 0}
   .ab-top{grid-template-columns:1fr;gap:32px}
   .ab-top{grid-template-columns:1fr 1fr;gap:16px}
   .ab-left{order:1}
-  .ab-right-num{order:2;align-items:flex-start;text-align:left}
+  .ab-right-num{order:2;align-items:center;text-align:center}
   .ab-right{order:3;grid-column:1/-1}
-  .ab-right-num .ab-decade-lbl{flex-direction:row;justify-content:flex-start}
+  .ab-right-num .ab-decade-lbl{flex-direction:row;justify-content:center}
   .ab-decade{font-size:clamp(3rem,18vw,7rem);text-align:center}
+  .ab-right h2{font-size:1.55rem;line-height:1.1}
+  .ab-right h2 br{display:none}
   .ab-decade-lbl{justify-content:center}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .svc-cell:nth-child(3n){border-right:1px solid var(--border)}
@@ -666,7 +670,7 @@ footer{background:var(--dark);padding:80px 0 0}
 <!-- MOBILE MENU -->
 <div id="mmenu">
   <button class="ham-close" onclick="closeMenu()">×</button>
-  <a href="#about" onclick="closeMenu()">Story</a>
+  <a href="#about" onclick="closeMenu()">About Us</a>
   <a href="#services" onclick="closeMenu()">Services</a>
   <a href="#portfolio" onclick="closeMenu()">Projects</a>
   <a href="#process" onclick="Process">Process</a>
@@ -680,7 +684,7 @@ footer{background:var(--dark);padding:80px 0 0}
   <div class="hero-l">
     <div class="hero-eye">Licensed Building Practitioner &nbsp;·&nbsp; Master Builders Association</div>
     <h1 class="hero-h1">BUILDING<br/><em>CHRISTCHURCH'S</em><br/>FINEST</h1>
-    <p class="hero-sub">20+ years crafting exceptional homes across Canterbury - on time, on budget, every time.</p>
+    <p class="hero-sub">10+ years crafting exceptional homes across Canterbury - on time, on budget, every time.</p>
     <div class="hero-btns">
       <button class="btn-g" onclick="openModal()">
         Get a Free Quote
@@ -701,7 +705,7 @@ footer{background:var(--dark);padding:80px 0 0}
     <video id="hero-vid" src="Images/hero-video.MP4" autoplay muted loop playsinline webkit-playsinline preload="auto"></video>
     <div class="hero-r-badge">
       <strong>5.0 ★</strong>
-      <span>11 Verified Reviews · Builderscrack</span>
+      <span>45 Verified Reviews · Builderscrack</span>
     </div>
   </div>
 </section>
@@ -766,7 +770,7 @@ footer{background:var(--dark);padding:80px 0 0}
         <div class="ab-decade">10+</div>
       </div>
       <div class="ab-right sr">
-        <h2>Crafting Excellence,<br/><em>Building Trust</em> —<br/>One Project at a Time.</h2>
+        <h2>Crafting Excellence,<br/><em>Building Trust</em> - One Project at a Time.</h2>
         <p>We are a licensed building company with 20+ years of experience in the construction industry, including over 10 years delivering high-quality projects across Christchurch and surrounding areas. Specialising in new builds, renovations, house levelling, foundation replacements, and complex earthquake repairs, we bring expert knowledge, exceptional attention to detail, and proven craftsmanship to every project.</p>
         <p>From high-end kitchens and bathrooms to roofing, structural concreting, tiling, waterproofing, painting, and full interior/exterior finishes, we provide a complete end-to-end building service. Owner Dave personally leads every project with a strong focus on quality workmanship, efficient timelines, and competitive pricing — all backed by full insurance cover — taking the pressure off you while saving time and money.</p>
         <div class="ab-tags">
@@ -775,6 +779,7 @@ footer{background:var(--dark);padding:80px 0 0}
 
           <span class="ab-tag">Christchurch Local</span>
           <span class="ab-tag">On-Time Guarantee</span>
+          <span class="ab-tag-break"></span>
           <span class="ab-tag">On-Budget Commitment</span>
           <span class="ab-tag">Banks Peninsula</span>
           <span class="ab-tag">Selwyn</span>
@@ -1027,20 +1032,24 @@ footer{background:var(--dark);padding:80px 0 0}
 <section id="stats">
   <div class="stats-inner">
     <div class="stats-label sr">Why Choose DKNZ</div>
-    <div class="stats-grid">
+    <div class="stats-grid" style="grid-template-columns:repeat(5,1fr)">
       <div class="stat-box sr d1">
+        <span class="stat-n"><span data-count="20" data-sfx="+">0</span></span>
+        <div class="stat-l">Years in Industry</div>
+      </div>
+      <div class="stat-box sr d2">
         <span class="stat-n"><span data-count="10" data-sfx="+">0</span></span>
         <div class="stat-l">Years in Canterbury</div>
       </div>
-      <div class="stat-box sr d2">
+      <div class="stat-box sr d3">
         <span class="stat-n"><span data-count="50" data-sfx="+">0</span></span>
         <div class="stat-l">Jobs Completed</div>
       </div>
-      <div class="stat-box sr d3">
+      <div class="stat-box sr d4">
         <span class="stat-n"><span data-count="5" data-sfx=".0 ★">0</span></span>
         <div class="stat-l">Verified Rating</div>
       </div>
-      <div class="stat-box sr d4">
+      <div class="stat-box sr d5">
         <span class="stat-n"><span data-count="100" data-sfx="%">0</span></span>
         <div class="stat-l">On-Time Delivery</div>
       </div>
@@ -1084,7 +1093,7 @@ footer{background:var(--dark);padding:80px 0 0}
     <div class="tst-label sr">Client Reviews</div>
     <div class="tst-rating sr d1">
       <div class="tst-stars">★★★★★</div>
-      <div class="tst-score">5.0 · 11 Verified Reviews · Builderscrack</div>
+      <div class="tst-score">5.0 · 45 Verified Reviews · Builderscrack</div>
     </div>
     <div class="tst-quotes sr d2">
 
@@ -1520,14 +1529,51 @@ document.querySelectorAll('img').forEach(i=>i.addEventListener('dragstart',e=>e.
     if(Math.abs(dx)>48)goTo(dx<0?cur+1:cur-1);
   },{passive:true});
 
-  /* Click side zones on desktop */
+  /* Click: side zones navigate, center zone opens lightbox */
   stage.addEventListener('click',e=>{
     if(e.target.closest('.pf-arr'))return;
     const x=e.clientX-stage.getBoundingClientRect().left;
     const w=stage.offsetWidth;
-    if(x<w*0.2)goTo(cur-1);
-    else if(x>w*0.8)goTo(cur+1);
+    if(x<w*0.2){goTo(cur-1);return;}
+    if(x>w*0.8){goTo(cur+1);return;}
+    // Center click → open fullscreen lightbox
+    const img=slides[cur].querySelector('img');
+    if(!img)return;
+    const plb=document.getElementById('proj-lightbox');
+    const plbImg=document.getElementById('plb-img');
+    const plbCat=document.getElementById('plb-cat');
+    const plbName=document.getElementById('plb-name');
+    plbImg.src=img.src;
+    plbCat.textContent=slides[cur].dataset.cat||'';
+    plbName.textContent=slides[cur].dataset.name||'';
+    plb.style.display='flex';
+    document.body.style.overflow='hidden';
   });
+
+  /* Lightbox nav synced to carousel */
+  (function(){
+    const plb=document.getElementById('proj-lightbox');
+    function plbClose(){plb.style.display='none';document.body.style.overflow='';}
+    function plbSync(){
+      const img=slides[cur].querySelector('img');
+      document.getElementById('plb-img').src=img?img.src:'';
+      document.getElementById('plb-cat').textContent=slides[cur].dataset.cat||'';
+      document.getElementById('plb-name').textContent=slides[cur].dataset.name||'';
+    }
+    document.getElementById('plb-close').addEventListener('click',plbClose);
+    document.getElementById('plb-close').addEventListener('touchend',e=>{e.preventDefault();plbClose();},{passive:false});
+    document.getElementById('plb-prev').addEventListener('click',()=>{goTo(cur-1);plbSync();});
+    document.getElementById('plb-next').addEventListener('click',()=>{goTo(cur+1);plbSync();});
+    document.addEventListener('keydown',e=>{
+      if(plb.style.display==='flex'){
+        if(e.key==='Escape')plbClose();
+        if(e.key==='ArrowLeft'){goTo(cur-1);plbSync();}
+        if(e.key==='ArrowRight'){goTo(cur+1);plbSync();}
+      }
+    });
+    // Also show cursor hint on active slide
+    slides.forEach(s=>s.style.cursor='zoom-in');
+  })();
 
   /* Auto-advance */
   let timer=setInterval(()=>goTo(cur+1),5000);
