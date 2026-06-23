@@ -326,6 +326,30 @@ body.hov-img #cur-label{opacity:1}
 .pf-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);border:none;cursor:pointer;padding:0;transition:background .2s,transform .2s;-webkit-tap-highlight-color:transparent}
 .pf-dot.active{background:var(--green);transform:scale(1.4)}
 
+/* ─── DESKTOP GRID GALLERY ─── */
+.pf-grid-wrap{background:#0b2410;padding:72px 60px 80px}
+.pf-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,240px);gap:10px;max-width:1280px;margin:0 auto}
+/* Mixed layout: img1 tall, img3 wide, img4 wide, img6 wide */
+.pf-cell-1{grid-column:1;grid-row:1/3}
+.pf-cell-2{grid-column:2;grid-row:1}
+.pf-cell-3{grid-column:3/5;grid-row:1}
+.pf-cell-4{grid-column:2/4;grid-row:2}
+.pf-cell-5{grid-column:4;grid-row:2}
+.pf-cell-6{grid-column:1/3;grid-row:3}
+.pf-cell-7{grid-column:3;grid-row:3}
+.pf-cell-8{grid-column:4;grid-row:3}
+.pf-cell{position:relative;overflow:hidden;cursor:zoom-in;border-radius:3px}
+.pf-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.25,1,.5,1)}
+.pf-cell:hover img{transform:scale(1.07)}
+.pf-cell-info{position:absolute;bottom:0;left:0;right:0;padding:56px 18px 18px;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,transparent 100%);opacity:0;transform:translateY(6px);transition:opacity .3s ease,transform .3s ease;pointer-events:none}
+.pf-cell:hover .pf-cell-info{opacity:1;transform:translateY(0)}
+.pf-cell-cat{font-family:'Barlow Condensed',sans-serif;font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:5px}
+.pf-cell-name{font-family:'Barlow Condensed',sans-serif;font-size:1.15rem;font-weight:900;text-transform:uppercase;color:#fff;line-height:1;margin-bottom:7px;letter-spacing:-.01em}
+.pf-cell-desc{font-size:.78rem;color:rgba(255,255,255,.72);line-height:1.55}
+/* Desktop: hide carousel, show grid */
+.pf-stage{display:none}
+.pf-grid-wrap{display:block}
+
 /* ─── PROCESS ─── */
 #process{padding:120px 0;background:var(--gd)}
 .proc-inner{max-width:1280px;margin:0 auto;padding:0 48px}
@@ -432,10 +456,10 @@ footer{background:var(--dark);padding:80px 0 0}
 .ft-links{list-style:none;display:flex;flex-direction:column;gap:10px}
 .ft-links a{font-size:.88rem;color:rgba(255,255,255,.35);transition:color .3s}
 .ft-links a:hover{color:#fff}
-.ft-bar{max-width:1280px;margin:64px auto 0;padding:20px 48px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.ft-copy{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2);font-weight:600}
-.ft-cred{font-family:'Barlow Condensed',sans-serif;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.2);font-weight:600}
-.ft-openflow{font-weight:800;font-size:1.1em;background:linear-gradient(90deg,#2563ff,#00e5c8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ft-bar{max-width:1280px;margin:64px auto 0;padding:18px 48px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.ft-copy{font-family:'Barlow',sans-serif;font-size:.78rem;letter-spacing:.01em;text-transform:none;color:rgba(255,255,255,.28);font-weight:500}
+.ft-cred{font-family:'Barlow',sans-serif;font-size:.78rem;letter-spacing:.01em;text-transform:none;color:rgba(255,255,255,.28);font-weight:500}
+.ft-openflow{font-family:'Barlow',sans-serif;font-weight:600;font-size:1em;text-decoration:none;background:linear-gradient(90deg,#2563ff,#00e5c8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.01em}
 
 /* ─── MODAL ─── */
 #modal{position:fixed;inset:0;z-index:800;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s}
@@ -499,7 +523,8 @@ footer{background:var(--dark);padding:80px 0 0}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .svc-cell:nth-child(3n){border-right:1px solid var(--border)}
   .svc-cell:nth-child(2n){border-right:none}
-  .pf-stage{height:72vw}
+  .pf-grid-wrap{display:none}
+  .pf-stage{display:block;height:72vw}
   .pf-slide.pf-prev{transform:translateX(-100%)}
   .pf-slide.pf-next{transform:translateX(100%)}
   .proc-steps{grid-template-columns:1fr}
@@ -964,7 +989,6 @@ footer{background:var(--dark);padding:80px 0 0}
     </div>
   </div>
   <div class="pf-stage" id="pfStage">
-
     <div class="pf-slide" data-cat="Interior · Storage" data-name="Attic Ladder Installation">
       <img src="Images/proj-1.jpg" alt="Attic ladder installation clean garage Christchurch" loading="lazy"/>
     </div>
@@ -989,16 +1013,84 @@ footer{background:var(--dark);padding:80px 0 0}
     <div class="pf-slide" data-cat="Exterior · Renovation" data-name="Home Extension & Timber Deck">
       <img src="Images/proj-8.jpg" alt="Home extension corrugated roof timber deck Canterbury" loading="lazy"/>
     </div>
-
     <button class="pf-arr pf-arr-l" id="pfPrev">&#8249;</button>
     <button class="pf-arr pf-arr-r" id="pfNext">&#8250;</button>
-
     <div class="pf-info-bar">
       <div class="pf-info-left">
         <div class="pf-info-cat" id="pfCat"></div>
         <div class="pf-info-name" id="pfName"></div>
       </div>
       <div class="pf-dot-bar" id="pfDotBar"></div>
+    </div>
+  </div>
+
+  <!-- Desktop Grid Gallery -->
+  <div class="pf-grid-wrap">
+    <div class="pf-grid">
+      <div class="pf-cell pf-cell-1" data-img="Images/proj-1.jpg" data-cat="Interior · Storage" data-name="Attic Ladder Installation" data-desc="Clean attic access fitted into a garage conversion — tidy, space-saving, built to last.">
+        <img src="Images/proj-1.jpg" alt="Attic ladder installation" loading="lazy"/>
+        <div class="pf-cell-info">
+          <div class="pf-cell-cat">Interior · Storage</div>
+          <div class="pf-cell-name">Attic Ladder Installation</div>
+          <div class="pf-cell-desc">Clean attic access fitted into a garage conversion — tidy, space-saving, built to last.</div>
+        </div>
+      </div>
+      <div class="pf-cell pf-cell-2" data-img="Images/proj-2.jpg" data-cat="Interior · Timber" data-name="Cedar Ceiling Interior" data-desc="Stunning cedar tongue-and-groove ceiling for a high-end interior finish.">
+        <img src="Images/proj-2.jpg" alt="Cedar ceiling interior" loading="lazy"/>
+        <div class="pf-cell-info">
+          <div class="pf-cell-cat">Interior · Timber</div>
+          <div class="pf-cell-name">Cedar Ceiling Interior</div>
+          <div class="pf-cell-desc">Stunning cedar tongue-and-groove ceiling for a high-end interior finish.</div>
+        </div>
+      </div>
+      <div class="pf-cell pf-cell-3" data-img="Images/proj-3.jpg" data-cat="Interior · Storage" data-name="Attic Ladder – Garage Conversion" data-desc="Laundry-garage conversion with discreet pull-down attic access — maximising every square metre.">
+        <img src="Images/proj-3.jpg" alt="Attic ladder garage conversion" loading="lazy"/>
+        <div class="pf-cell-info">
+          <div class="pf-cell-cat">Interior · Storage</div>
+          <div class="pf-cell-name">Attic Ladder – Garage Conversion</div>
+          <div class="pf-cell-desc">Laundry-garage conversion with discreet pull-down attic access — maximising every square metre.</div>
+        </div>
+      </div>
+      <div class="pf-cell pf-cell-4" data-img="Images/proj-4.jpg" data-cat="Multi-Unit · Decking" data-name="Multi-Unit Development" data-desc="Multi-unit residential build with full decking and sleek black balustrades throughout.">
+        <img src="Images/proj-4.jpg" alt="Multi-unit development decking" loading="lazy"/>
+        <div class="pf-cell-info">
+          <div class="pf-cell-cat">Multi-Unit · Decking</div>
+          <div class="pf-cell-name">Multi-Unit Development</div>
+          <div class="pf-cell-desc">Multi-unit residential build with full decking and sleek black balustrades throughout.</div>
+        </div>
+      </div>
+      <div class="pf-cell pf-cell-5" data-img="Images/proj-5.jpg" data-cat="Outdoor · Pergola" data-name="Timber Pergola & Arbour" data-desc="Custom-built cedar pergola adding character and shade to a Canterbury outdoor living space.">
+        <img src="Images/proj-5.jpg" alt="Timber pergola arbour" loading="lazy"/>
+        <div class="pf-cell-info">
+          <div class="pf-cell-cat">Outdoor · Pergola</div>
+          <div class="pf-cell-name">Timber Pergola & Arbour</div>
+          <div class="pf-cell-desc">Custom-built cedar pergola adding character and shade to a Canterbury outdoor living space.</div>
+        </div>
+      </div>
+      <div class="pf-cell pf-cell-6" data-img="Images/proj-6.jpg" data-cat="Outdoor · Decking" data-name="Deck Restoration" data-desc="Full deck restoration — sanded back, refinished, and looking brand new.">
+        <img src="Images/proj-6.jpg" alt="Deck restoration sanding" loading="lazy"/>
+        <div class="pf-cell-info">
+          <div class="pf-cell-cat">Outdoor · Decking</div>
+          <div class="pf-cell-name">Deck Restoration</div>
+          <div class="pf-cell-desc">Full deck restoration — sanded back, refinished, and looking brand new.</div>
+        </div>
+      </div>
+      <div class="pf-cell pf-cell-7" data-img="Images/proj-7.jpg" data-cat="Interior · Staircase" data-name="Grand Staircase & Flooring" data-desc="Grand statement staircase with dark timber handrails and premium carpet runner.">
+        <img src="Images/proj-7.jpg" alt="Grand staircase flooring" loading="lazy"/>
+        <div class="pf-cell-info">
+          <div class="pf-cell-cat">Interior · Staircase</div>
+          <div class="pf-cell-name">Grand Staircase & Flooring</div>
+          <div class="pf-cell-desc">Grand statement staircase with dark timber handrails and premium carpet runner.</div>
+        </div>
+      </div>
+      <div class="pf-cell pf-cell-8" data-img="Images/proj-8.jpg" data-cat="Exterior · Renovation" data-name="Home Extension & Timber Deck" data-desc="Full home extension with corrugated roofing and a new timber deck — Canterbury quality.">
+        <img src="Images/proj-8.jpg" alt="Home extension timber deck" loading="lazy"/>
+        <div class="pf-cell-info">
+          <div class="pf-cell-cat">Exterior · Renovation</div>
+          <div class="pf-cell-name">Home Extension & Timber Deck</div>
+          <div class="pf-cell-desc">Full home extension with corrugated roofing and a new timber deck — Canterbury quality.</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1293,8 +1385,8 @@ footer{background:var(--dark);padding:80px 0 0}
     </div>
   </div>
   <div class="ft-bar">
-    <p class="ft-copy">© 2026 DKNZ Building &amp; Construction Ltd. Christchurch, New Zealand. All Rights Reserved.</p>
-    <p class="ft-cred">Built by <a href="https://openflow.fun" target="_blank" class="ft-openflow">openflow</a> · Growing Brands Digitally</p>
+    <p class="ft-copy">© 2026 DKNZ Building. All rights reserved.</p>
+    <p class="ft-cred">Built by <a href="https://openflow.fun" target="_blank" rel="noopener" class="ft-openflow">openflow</a> · Growing Brands Digitally</p>
   </div>
 </footer>
 
@@ -1598,6 +1690,38 @@ document.querySelectorAll('img').forEach(i=>i.addEventListener('dragstart',e=>e.
   stage.addEventListener('touchstart',()=>clearInterval(timer),{passive:true});
 
   goTo(0);
+})();
+
+// ── DESKTOP GRID GALLERY LIGHTBOX ──
+(function(){
+  const cells=document.querySelectorAll('.pf-cell');
+  const plb=document.getElementById('proj-lightbox');
+  const plbImg=document.getElementById('plb-img');
+  const plbCat=document.getElementById('plb-cat');
+  const plbName=document.getElementById('plb-name');
+  if(!plb||!cells.length)return;
+  const imgs=[...cells].map(c=>({src:c.dataset.img,cat:c.dataset.cat,name:c.dataset.name}));
+  let cur=0;
+  function open(i){
+    cur=i;
+    plbImg.src=imgs[cur].src;
+    plbCat.textContent=imgs[cur].cat||'';
+    plbName.textContent=imgs[cur].name||'';
+    plb.style.display='flex';
+    document.body.style.overflow='hidden';
+  }
+  function close(){plb.style.display='none';document.body.style.overflow='';}
+  cells.forEach((c,i)=>c.addEventListener('click',()=>open(i)));
+  document.getElementById('plb-close').addEventListener('click',close);
+  document.getElementById('plb-prev').addEventListener('click',()=>open((cur-1+imgs.length)%imgs.length));
+  document.getElementById('plb-next').addEventListener('click',()=>open((cur+1)%imgs.length));
+  document.addEventListener('keydown',e=>{
+    if(plb.style.display==='flex'){
+      if(e.key==='Escape')close();
+      if(e.key==='ArrowLeft')open((cur-1+imgs.length)%imgs.length);
+      if(e.key==='ArrowRight')open((cur+1)%imgs.length);
+    }
+  });
 })();
 
 // ── HERO VIDEO: force play on all browsers/iOS ──
