@@ -105,13 +105,13 @@ body.hov-img #cur-label{opacity:1}
 
 /* ─── HERO ─── */
 #hero{display:grid;grid-template-columns:42fr 58fr;min-height:100vh}
-.hero-l{background:var(--gd);display:flex;flex-direction:column;justify-content:center;padding:82px 64px 17vw;position:relative;overflow:hidden}
+.hero-l{background:var(--gd);display:flex;flex-direction:column;justify-content:center;padding:82px 64px 17vw;position:relative;overflow:hidden;isolation:isolate}
 .hero-l::before{content:'DKNZ';position:absolute;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:22vw;color:rgba(255,255,255,.04);line-height:1;left:50%;transform:translateX(-50%);bottom:8vw;letter-spacing:-.02em;user-select:none;pointer-events:none}
 .hero-eye{font-family:'Barlow Condensed',sans-serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gl);font-weight:600;margin-bottom:12px;white-space:nowrap;animation:fadeUp .8s .2s both}
 .hero-h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(2.4rem,4.6vw,4.6rem);line-height:.92;letter-spacing:-.01em;text-transform:uppercase;color:#fff;margin-bottom:14px;animation:fadeUp .8s .4s both}
 .hero-h1 em{color:var(--green);font-style:normal}
 .hero-sub{font-size:1rem;color:rgba(255,255,255,.6);line-height:1.7;max-width:340px;margin-bottom:24px;animation:fadeUp .8s .6s both}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .8s .8s both;position:absolute;bottom:17vw;left:64px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .8s .8s both;position:absolute;bottom:17vw;left:64px;z-index:1}
 .btn-g{background:var(--green);color:#fff;padding:14px 30px;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;transition:background .3s;display:inline-flex;align-items:center;gap:8px}
 .btn-g:hover{background:var(--gl);color:var(--dark)}
 .btn-ghost{border:1.5px solid rgba(255,255,255,.35);color:rgba(255,255,255,.7);padding:13px 28px;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
@@ -833,7 +833,7 @@ footer{background:var(--dark);padding:80px 0 0}
       </div>
     </div>
     <div class="ab-photo sr d2">
-      <img src="Images/house.jpg" alt="Beautiful Christchurch home built by DKNZ" loading="lazy"/>
+      <img src="Images/studio.jpg" alt="Beautiful Christchurch home built by DKNZ" loading="lazy"/>
       <div class="ab-photo-lbl">Quality craftsmanship <strong>on every job site</strong></div>
     </div>
   </div>
@@ -996,7 +996,7 @@ footer{background:var(--dark);padding:80px 0 0}
       <img src="Images/proj-2.jpg" alt="Cedar timber ceiling interior gable" loading="lazy"/>
     </div>
     <div class="pf-slide" data-cat="Interior · Storage" data-name="Attic Ladder – Garage Conversion">
-      <img src="Images/proj-3.jpg" alt="Attic ladder garage conversion laundry" loading="lazy"/>
+      <img src="Images/retrofitwindows.jpg" alt="Retro Fit Windows and Doors" loading="lazy"/>
     </div>
     <div class="pf-slide" data-cat="Multi-Unit · Decking" data-name="Multi-Unit Development">
       <img src="Images/proj-4.jpg" alt="Multi-unit development timber decking black railings" loading="lazy"/>
@@ -1004,14 +1004,14 @@ footer{background:var(--dark);padding:80px 0 0}
     <div class="pf-slide" data-cat="Outdoor · Pergola" data-name="Timber Pergola & Arbour">
       <img src="Images/proj-5.jpg" alt="Timber pergola arbour Canterbury cedar" loading="lazy"/>
     </div>
-    <div class="pf-slide" data-cat="Outdoor · Decking" data-name="Deck Restoration">
-      <img src="Images/proj-6.jpg" alt="Deck restoration sanding balcony Christchurch" loading="lazy"/>
+    <div class="pf-slide" data-cat="Exterior · Renovation" data-name="Cashmere Re-Roof and Renovation">
+      <img src="Images/proj-6.jpg" alt="Cashmere Re-Roof and Renovation" loading="lazy"/>
     </div>
     <div class="pf-slide" data-cat="Interior · Staircase" data-name="Grand Staircase & Flooring">
       <img src="Images/proj-7.jpg" alt="Grand staircase carpet runner dark wood handrail" loading="lazy"/>
     </div>
-    <div class="pf-slide" data-cat="Exterior · Renovation" data-name="Home Extension & Timber Deck">
-      <img src="Images/proj-8.jpg" alt="Home extension corrugated roof timber deck Canterbury" loading="lazy"/>
+    <div class="pf-slide" data-cat="Outdoor · Decking" data-name="Decks and Outdoor Living">
+      <img src="Images/proj-8.jpg" alt="Decks and Outdoor Living - Timber Pergola with Clearlite Roofing" loading="lazy"/>
     </div>
     <button class="pf-arr pf-arr-l" id="pfPrev">&#8249;</button>
     <button class="pf-arr pf-arr-r" id="pfNext">&#8250;</button>
@@ -1043,12 +1043,12 @@ footer{background:var(--dark);padding:80px 0 0}
           <div class="pf-cell-desc">Stunning cedar tongue-and-groove ceiling for a high-end interior finish.</div>
         </div>
       </div>
-      <div class="pf-cell pf-cell-3" data-img="Images/proj-3.jpg" data-cat="Interior · Storage" data-name="Attic Ladder – Garage Conversion" data-desc="Laundry-garage conversion with discreet pull-down attic access — maximising every square metre.">
-        <img src="Images/proj-3.jpg" alt="Attic ladder garage conversion" loading="lazy"/>
+      <div class="pf-cell pf-cell-3" data-img="Images/retrofitwindows.jpg" data-cat="Exterior · Renovation" data-name="Retro Fit Windows and Doors" data-desc="Retro fit windows and doors replacement — modernising Christchurch homes with precision and care.">
+        <img src="Images/retrofitwindows.jpg" alt="Retro Fit Windows and Doors" loading="lazy"/>
         <div class="pf-cell-info">
-          <div class="pf-cell-cat">Interior · Storage</div>
-          <div class="pf-cell-name">Attic Ladder – Garage Conversion</div>
-          <div class="pf-cell-desc">Laundry-garage conversion with discreet pull-down attic access — maximising every square metre.</div>
+          <div class="pf-cell-cat">Exterior · Renovation</div>
+          <div class="pf-cell-name">Retro Fit Windows and Doors</div>
+          <div class="pf-cell-desc">Retro fit windows and doors replacement — modernising Christchurch homes with precision and care.</div>
         </div>
       </div>
       <div class="pf-cell pf-cell-4" data-img="Images/proj-4.jpg" data-cat="Multi-Unit · Decking" data-name="Multi-Unit Development" data-desc="Multi-unit residential build with full decking and sleek black balustrades throughout.">
@@ -1067,12 +1067,12 @@ footer{background:var(--dark);padding:80px 0 0}
           <div class="pf-cell-desc">Custom-built cedar pergola adding character and shade to a Canterbury outdoor living space.</div>
         </div>
       </div>
-      <div class="pf-cell pf-cell-6" data-img="Images/proj-6.jpg" data-cat="Outdoor · Decking" data-name="Deck Restoration" data-desc="Full deck restoration — sanded back, refinished, and looking brand new.">
-        <img src="Images/proj-6.jpg" alt="Deck restoration sanding" loading="lazy"/>
+      <div class="pf-cell pf-cell-6" data-img="Images/proj-6.jpg" data-cat="Exterior · Renovation" data-name="Cashmere Re-Roof and Renovation" data-desc="Cashmere re-roof and full renovation — quality workmanship from start to finish.">
+        <img src="Images/proj-6.jpg" alt="Cashmere Re-Roof and Renovation" loading="lazy"/>
         <div class="pf-cell-info">
-          <div class="pf-cell-cat">Outdoor · Decking</div>
-          <div class="pf-cell-name">Deck Restoration</div>
-          <div class="pf-cell-desc">Full deck restoration — sanded back, refinished, and looking brand new.</div>
+          <div class="pf-cell-cat">Exterior · Renovation</div>
+          <div class="pf-cell-name">Cashmere Re-Roof and Renovation</div>
+          <div class="pf-cell-desc">Cashmere re-roof and full renovation — quality workmanship from start to finish.</div>
         </div>
       </div>
       <div class="pf-cell pf-cell-7" data-img="Images/proj-7.jpg" data-cat="Interior · Staircase" data-name="Grand Staircase & Flooring" data-desc="Grand statement staircase with dark timber handrails and premium carpet runner.">
@@ -1083,12 +1083,12 @@ footer{background:var(--dark);padding:80px 0 0}
           <div class="pf-cell-desc">Grand statement staircase with dark timber handrails and premium carpet runner.</div>
         </div>
       </div>
-      <div class="pf-cell pf-cell-8" data-img="Images/proj-8.jpg" data-cat="Exterior · Renovation" data-name="Home Extension & Timber Deck" data-desc="Full home extension with corrugated roofing and a new timber deck — Canterbury quality.">
-        <img src="Images/proj-8.jpg" alt="Home extension timber deck" loading="lazy"/>
+      <div class="pf-cell pf-cell-8" data-img="Images/proj-8.jpg" data-cat="Outdoor · Decking" data-name="Decks and Outdoor Living" data-desc="Timber Pergola with Clearlite Roofing (99.9% UV protection).">
+        <img src="Images/proj-8.jpg" alt="Decks and Outdoor Living - Timber Pergola with Clearlite Roofing" loading="lazy"/>
         <div class="pf-cell-info">
-          <div class="pf-cell-cat">Exterior · Renovation</div>
-          <div class="pf-cell-name">Home Extension & Timber Deck</div>
-          <div class="pf-cell-desc">Full home extension with corrugated roofing and a new timber deck — Canterbury quality.</div>
+          <div class="pf-cell-cat">Outdoor · Decking</div>
+          <div class="pf-cell-name">Decks and Outdoor Living</div>
+          <div class="pf-cell-desc">Timber Pergola with Clearlite Roofing (99.9% UV protection).</div>
         </div>
       </div>
     </div>
