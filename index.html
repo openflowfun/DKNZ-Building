@@ -193,6 +193,7 @@ body.hov-img #cur-label{opacity:1}
 }
 .ab-decade-lbl::before{display:none}
 br.mobile-br{display:none}
+.mobile-only{display:none}
 
 /* Base: dim green outline always visible */
 .ab-decade{
@@ -513,6 +514,7 @@ footer{background:var(--dark);padding:80px 0 0}
   .ab-right h2{font-size:1.55rem;line-height:1.1}
   .ab-right h2 br{display:none}
   .ab-right h2 br.mobile-br{display:block}
+  .mobile-only{display:flex}
   .ab-decade-lbl{justify-content:center;padding-top:32px;flex-direction:column;line-height:1.5}
   br.mobile-br{display:block}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
@@ -712,7 +714,9 @@ footer{background:var(--dark);padding:80px 0 0}
       <li><a href="#about">About Us</a></li>
       <li><a href="#portfolio">Projects</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#stats">Why Us</a></li>
       <li><a href="#process">Process</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="nav-quote" onclick="openModal()">Get a Free Quote</button>
@@ -726,7 +730,8 @@ footer{background:var(--dark);padding:80px 0 0}
   <a href="#about" onclick="closeMenu()">About Us</a>
   <a href="#portfolio" onclick="closeMenu()">Projects</a>
   <a href="#services" onclick="closeMenu()">Services</a>
-  <a href="#process" onclick="Process">Process</a>
+  <a href="#stats" onclick="closeMenu()">Why Us</a>
+  <a href="#process" onclick="closeMenu()">Process</a>
   <a href="#testimonials" onclick="closeMenu()">Reviews</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
   <a class="mm-cta" href="#contact" onclick="openModal();closeMenu()">Get a Free Quote</a>
@@ -1159,6 +1164,10 @@ footer{background:var(--dark);padding:80px 0 0}
         <span class="stat-n"><span data-count="5" data-sfx=".0 ★">0</span></span>
         <div class="stat-l">Verified Rating</div>
       </div>
+      <div class="stat-box sr mobile-only" style="flex-direction:column;justify-content:flex-end">
+        <span class="stat-n" style="font-size:clamp(1.6rem,7vw,2.4rem);letter-spacing:.01em;line-height:1.05">LBP<br/>NZCB</span>
+        <div class="stat-l">Licensed &amp; Certified</div>
+      </div>
       <div class="stat-box sr d5">
         <span class="stat-n"><span data-count="100" data-sfx="%">0</span></span>
         <div class="stat-l">On-Time Delivery</div>
@@ -1190,7 +1199,7 @@ footer{background:var(--dark);padding:80px 0 0}
         <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         <div>
           <h4>Local Canterbury Team</h4>
-          <p>Proudly Christchurch-local. We know Canterbury's climate, council requirements and construction landscape inside out.</p>
+          <p>Proudly Canterbury-local. We know Canterbury's climate, council requirements and construction landscape inside out.</p>
         </div>
       </div>
     </div>
