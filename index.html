@@ -676,6 +676,16 @@ footer{background:var(--dark);padding:80px 0 0}
   .proc-title{grid-column:2;font-size:.95rem;margin-bottom:0;align-self:end}
   .proc-desc{grid-column:2;font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.6}
 }
+/* ── RENO EXPAND (desktop only) ── */
+.reno-more-wrap{background:#0b2410;display:flex;justify-content:center;padding:0 0 20px}
+.reno-more-btn{font-family:'Barlow Condensed',sans-serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;background:transparent;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.5);padding:14px 44px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:all .3s}
+.reno-more-btn:hover{border-color:var(--gl);color:var(--gl)}
+.reno-more-btn svg{transition:transform .3s}
+.reno-more-btn.open svg{transform:rotate(180deg)}
+.reno-expand{background:#0b2410;padding:0 60px 80px;display:none}
+.reno-expand.open{display:block}
+.reno-eg{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:240px;gap:10px;max-width:1280px;margin:0 auto}
+@media(max-width:768px){.reno-more-wrap,.reno-expand{display:none!important}}
 </style>
 </head>
 <body>
@@ -1028,6 +1038,39 @@ footer{background:var(--dark);padding:80px 0 0}
     <div class="pf-slide" data-cat="Outdoor · Decking" data-name="Timber Pergola with Clearlite Roofing">
       <img src="Images/proj-8.jpg" alt="Decks and Outdoor Living - Timber Pergola with Clearlite Roofing" loading="lazy"/>
     </div>
+    <div class="pf-slide" data-cat="Full Renovation · Lounge" data-name="Open Plan Lounge Renovation">
+      <img src="Images/Reno1.jpg" alt="Full home renovation open plan lounge Canterbury" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Full Renovation · Lounge" data-name="Open Plan Living & Dining">
+      <img src="Images/Reno2.jpg" alt="Full renovation open plan living and dining room" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Full Renovation · Kitchen" data-name="Kitchen – Subway Tile & New Cabinetry">
+      <img src="Images/Reno3.jpg" alt="Full kitchen renovation grey cabinets subway tile splashback" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Full Renovation · Bedroom" data-name="Master Bedroom – New Carpet & Fit-Out">
+      <img src="Images/Reno4.jpg" alt="Master bedroom renovation new carpet and paint" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Full Renovation · Bathroom" data-name="Bathroom – Freestanding Bath & Shower">
+      <img src="Images/Reno5.jpg" alt="Bathroom renovation freestanding bath walk-in shower marble tile" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Full Renovation · Bedroom" data-name="Second Bedroom Renovation">
+      <img src="Images/Reno6.jpg" alt="Second bedroom renovation new carpet Canterbury" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Full Renovation · Bedroom" data-name="Third Bedroom – Kids Room">
+      <img src="Images/Reno7.jpg" alt="Kids bedroom renovation Canterbury" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Full Renovation · Exterior" data-name="New Kwila Deck & Exterior">
+      <img src="Images/Reno8.jpg" alt="New Kwila deck exterior renovation Canterbury" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Full Renovation · Exterior" data-name="Rear Exterior & Deck Completion">
+      <img src="Images/Reno9.jpg" alt="Rear exterior renovation with new deck Canterbury" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Full Renovation · Exterior" data-name="Exterior & Driveway Refresh">
+      <img src="Images/Reno10.jpg" alt="Exterior side and driveway renovation Canterbury" loading="lazy"/>
+    </div>
+    <div class="pf-slide" data-cat="Renovation · Interior Timber" data-name="Premium Cedar Cladding & Feature Interior">
+      <img src="Images/Renovation.JPG" alt="Premium cedar timber cladding feature wall renovation interior" loading="lazy"/>
+    </div>
     <button class="pf-arr pf-arr-l" id="pfPrev">&#8249;</button>
     <button class="pf-arr pf-arr-r" id="pfNext">&#8250;</button>
     <div class="pf-info-bar">
@@ -1097,6 +1140,62 @@ footer{background:var(--dark);padding:80px 0 0}
           <div class="pf-cell-name">Timber Pergola with Clearlite Roofing</div>
           <div class="pf-cell-desc">Timber Pergola with Clearlite Roofing (99.9% UV protection).</div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop: Click for More (Renovation Project) -->
+  <div class="reno-more-wrap">
+    <button class="reno-more-btn" id="renoBtn" onclick="toggleReno()">
+      Click for More
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
+  </div>
+  <div class="reno-expand" id="renoExpand">
+    <div class="reno-eg">
+      <div class="pf-cell" data-img="Images/Reno1.jpg" data-cat="Full Renovation · Lounge" data-name="Open Plan Lounge Renovation" data-desc="Spacious open-plan lounge with new carpet, fresh paint and seamless flow to the kitchen.">
+        <img src="Images/Reno1.jpg" alt="Full renovation open plan lounge" loading="lazy"/>
+        <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Lounge</div><div class="pf-cell-name">Open Plan Lounge Renovation</div></div>
+      </div>
+      <div class="pf-cell" data-img="Images/Reno2.jpg" data-cat="Full Renovation · Lounge" data-name="Open Plan Living & Dining" data-desc="Wide-angle view of the completed lounge and dining area — light, airy and beautifully finished.">
+        <img src="Images/Reno2.jpg" alt="Full renovation open plan living dining" loading="lazy"/>
+        <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Lounge</div><div class="pf-cell-name">Open Plan Living &amp; Dining</div></div>
+      </div>
+      <div class="pf-cell" data-img="Images/Reno3.jpg" data-cat="Full Renovation · Kitchen" data-name="Kitchen – Subway Tile & New Cabinetry" data-desc="Fully renovated kitchen with grey cabinetry, subway tile splashback and new timber-look flooring.">
+        <img src="Images/Reno3.jpg" alt="Full kitchen renovation subway tile grey cabinets" loading="lazy"/>
+        <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Kitchen</div><div class="pf-cell-name">Kitchen – Subway Tile &amp; New Cabinetry</div></div>
+      </div>
+      <div class="pf-cell" data-img="Images/Reno4.jpg" data-cat="Full Renovation · Bedroom" data-name="Master Bedroom – New Carpet & Fit-Out" data-desc="Master bedroom transformation with new carpet, fresh paint and quality joinery throughout.">
+        <img src="Images/Reno4.jpg" alt="Master bedroom renovation new carpet" loading="lazy"/>
+        <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Bedroom</div><div class="pf-cell-name">Master Bedroom – New Carpet &amp; Fit-Out</div></div>
+      </div>
+      <div class="pf-cell" data-img="Images/Reno5.jpg" data-cat="Full Renovation · Bathroom" data-name="Bathroom – Freestanding Bath & Walk-In Shower" data-desc="Stunning bathroom with freestanding bath, curved walk-in shower and full marble-look tiling.">
+        <img src="Images/Reno5.jpg" alt="Bathroom renovation freestanding bath walk-in shower" loading="lazy"/>
+        <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Bathroom</div><div class="pf-cell-name">Bathroom – Freestanding Bath &amp; Shower</div></div>
+      </div>
+      <div class="pf-cell" data-img="Images/Reno6.jpg" data-cat="Full Renovation · Bedroom" data-name="Second Bedroom Renovation" data-desc="Second bedroom with new carpet, fresh neutral walls and quality window joinery.">
+        <img src="Images/Reno6.jpg" alt="Second bedroom renovation new carpet" loading="lazy"/>
+        <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Bedroom</div><div class="pf-cell-name">Second Bedroom Renovation</div></div>
+      </div>
+      <div class="pf-cell" data-img="Images/Reno7.jpg" data-cat="Full Renovation · Bedroom" data-name="Third Bedroom – Kids Room" data-desc="Compact third bedroom finished to the same high standard — bright, clean and ready to enjoy.">
+        <img src="Images/Reno7.jpg" alt="Kids bedroom renovation Canterbury" loading="lazy"/>
+        <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Bedroom</div><div class="pf-cell-name">Third Bedroom – Kids Room</div></div>
+      </div>
+      <div class="pf-cell" data-img="Images/Reno8.jpg" data-cat="Full Renovation · Exterior" data-name="New Kwila Deck & Outdoor Living" data-desc="New Kwila hardwood deck built off the rear of the home — perfect outdoor entertaining space.">
+        <img src="Images/Reno8.jpg" alt="New Kwila deck outdoor living Canterbury" loading="lazy"/>
+        <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Exterior</div><div class="pf-cell-name">New Kwila Deck &amp; Outdoor Living</div></div>
+      </div>
+      <div class="pf-cell" data-img="Images/Reno9.jpg" data-cat="Full Renovation · Exterior" data-name="Rear Exterior & Deck Completion" data-desc="Rear elevation showing the completed deck, refreshed exterior and manicured lawn.">
+        <img src="Images/Reno9.jpg" alt="Rear exterior renovation deck completion" loading="lazy"/>
+        <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Exterior</div><div class="pf-cell-name">Rear Exterior &amp; Deck Completion</div></div>
+      </div>
+      <div class="pf-cell" data-img="Images/Reno10.jpg" data-cat="Full Renovation · Exterior" data-name="Exterior & Driveway Refresh" data-desc="Side elevation and driveway — part of a comprehensive property refresh from inside out.">
+        <img src="Images/Reno10.jpg" alt="Exterior driveway renovation Canterbury" loading="lazy"/>
+        <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Exterior</div><div class="pf-cell-name">Exterior &amp; Driveway Refresh</div></div>
+      </div>
+      <div class="pf-cell" data-img="Images/Renovation.JPG" data-cat="Renovation · Interior Timber" data-name="Premium Cedar Cladding & Feature Interior" data-desc="Floor-to-ceiling cedar tongue & groove cladding with integrated wall sconce lighting — a standout feature in this premium Canterbury renovation.">
+        <img src="Images/Renovation.JPG" alt="Premium cedar cladding feature wall renovation interior" loading="lazy"/>
+        <div class="pf-cell-info"><div class="pf-cell-cat">Renovation · Interior Timber</div><div class="pf-cell-name">Premium Cedar Cladding &amp; Feature Interior</div></div>
       </div>
     </div>
   </div>
@@ -1766,6 +1865,19 @@ document.querySelectorAll('img').forEach(i=>i.addEventListener('dragstart',e=>e.
   document.addEventListener('touchstart',unlockOnTouch,{once:true,passive:true});
   document.addEventListener('click',unlockOnTouch,{once:true});
 })();
+
+// ── RENO EXPAND TOGGLE (desktop only) ──
+function toggleReno(){
+  var e=document.getElementById('renoExpand');
+  var b=document.getElementById('renoBtn');
+  var isOpen=e.classList.contains('open');
+  e.classList.toggle('open',!isOpen);
+  b.classList.toggle('open',!isOpen);
+  b.innerHTML=isOpen
+    ?'Click for More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>'
+    :'Show Less <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>';
+  if(!isOpen)setTimeout(function(){e.scrollIntoView({behavior:'smooth',block:'start'});},50);
+}
 
 // ── SERVICE BOTTOM SHEET (mobile only) ──
 (function(){
