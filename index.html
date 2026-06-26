@@ -192,6 +192,7 @@ body.hov-img #cur-label{opacity:1}
   display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:8px;padding-top:22px;text-align:center;
 }
 .ab-decade-lbl::before{display:none}
+br.mobile-br{display:none}
 
 /* Base: dim green outline always visible */
 .ab-decade{
@@ -511,7 +512,8 @@ footer{background:var(--dark);padding:80px 0 0}
   .ab-decade{font-size:clamp(3rem,18vw,7rem);text-align:center}
   .ab-right h2{font-size:1.55rem;line-height:1.1}
   .ab-right h2 br{display:none}
-  .ab-decade-lbl{justify-content:center;padding-top:8px}
+  .ab-decade-lbl{justify-content:center;padding-top:32px;flex-direction:column;line-height:1.5}
+  br.mobile-br{display:block}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .svc-cell:nth-child(3n){border-right:1px solid var(--border)}
   .svc-cell:nth-child(2n){border-right:none}
@@ -800,7 +802,7 @@ footer{background:var(--dark);padding:80px 0 0}
     <div class="ab-top">
       <div class="ab-left sr-l">
         <div class="ab-decade ab-decade-alt">20+</div>
-        <div class="ab-decade-lbl">Years in Industry</div>
+        <div class="ab-decade-lbl">Years in<br class="mobile-br"> Industry</div>
       </div>
       <div class="ab-right sr">
         <h2>Crafting Excellence,<br/><em>Building Trust</em> - One Project at a Time.</h2>
@@ -821,7 +823,7 @@ footer{background:var(--dark);padding:80px 0 0}
       </div>
       <div class="ab-right-num sr-r">
         <div class="ab-decade">10+</div>
-        <div class="ab-decade-lbl">Years in Canterbury</div>
+        <div class="ab-decade-lbl">Years in<br class="mobile-br"> Canterbury</div>
       </div>
     </div>
     <div class="ab-photo sr d2">
