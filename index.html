@@ -324,13 +324,13 @@ br.mobile-br{display:none}
 /* ─── DESKTOP GRID GALLERY ─── */
 .pf-grid-wrap{background:#0b2410;padding:72px 60px 80px}
 .pf-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,240px);gap:10px;max-width:1280px;margin:0 auto}
-/* Mixed layout: img1 tall, img3 wide, img4 wide, img6 wide */
-.pf-cell-1{grid-column:1;grid-row:1/3}
-.pf-cell-2{grid-column:2;grid-row:1}
-.pf-cell-3{grid-column:3/5;grid-row:1}
-.pf-cell-4{grid-column:2/5;grid-row:2}
-.pf-cell-6{grid-column:1/3;grid-row:3}
-.pf-cell-7{grid-column:3;grid-row:3}
+/* Mixed layout: cell-1 wide top-left, cell-4 tall portrait left, cell-6 3-wide middle */
+.pf-cell-1{grid-column:1/3;grid-row:1}
+.pf-cell-2{grid-column:3;grid-row:1}
+.pf-cell-3{grid-column:4;grid-row:1}
+.pf-cell-4{grid-column:1;grid-row:2/4}
+.pf-cell-6{grid-column:2/5;grid-row:2}
+.pf-cell-7{grid-column:2/4;grid-row:3}
 .pf-cell-8{grid-column:4;grid-row:3}
 .pf-cell{position:relative;overflow:hidden;cursor:zoom-in;border-radius:3px}
 .pf-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s cubic-bezier(.25,1,.5,1)}
@@ -372,7 +372,7 @@ br.mobile-br{display:none}
 .stats-inner{max-width:1280px;margin:0 auto;padding:0 48px}
 .stats-label{font-family:'Barlow Condensed',sans-serif;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:var(--green);margin-bottom:60px}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);align-items:stretch}
-.stat-box{background:var(--bg);padding:52px 40px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.stat-box{background:var(--bg);padding:52px 40px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
 .stat-box::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--green);transition:height .8s cubic-bezier(.22,1,.36,1)}
 .stat-box.in::before{height:100%}
 .stat-n{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,5.5vw,5.5rem);font-weight:900;color:var(--dark);line-height:.9;letter-spacing:-.02em;display:block;white-space:nowrap}
@@ -1065,7 +1065,7 @@ footer{background:var(--dark);padding:80px 0 0}
     <div class="pf-slide" data-cat="Full Renovation · Outdoor" data-name="Kwila Deck & Outdoor Entertaining">
       <img src="Images/Reno8.JPEG" alt="Kwila timber deck outdoor entertaining area Canterbury" loading="lazy"/>
     </div>
-    <div class="pf-slide" data-cat="Full Renovation · Exterior" data-name="Rear Garden & Lawn Transformation">
+    <div class="pf-slide" data-cat="Full Renovation · Exterior" data-name="Kwila Deck & Rear Garden">
       <img src="Images/Reno9.JPEG" alt="Rear garden lawn transformation Canterbury" loading="lazy"/>
     </div>
     <div class="pf-slide" data-cat="Renovation · Interior Timber" data-name="Premium Cedar Cladding & Feature Interior">
@@ -1085,14 +1085,16 @@ footer{background:var(--dark);padding:80px 0 0}
   <!-- Desktop Grid Gallery -->
   <div class="pf-grid-wrap">
     <div class="pf-grid">
-      <div class="pf-cell pf-cell-1" data-img="Images/proj-1.jpg" data-cat="Interior · Storage" data-name="Attic Ladder Installation" data-desc="Clean attic access fitted into a garage conversion — tidy, space-saving, built to last.">
-        <img src="Images/proj-1.jpg" alt="Attic ladder installation" loading="lazy"/>
+      <!-- cell-1: wide landscape → Timber Pergola -->
+      <div class="pf-cell pf-cell-1" data-img="Images/proj-8.jpg" data-cat="Outdoor · Decking" data-name="Timber Pergola with Clearlite Roofing" data-desc="Timber Pergola with Clearlite Roofing (99.9% UV protection) — a stunning outdoor room built to last.">
+        <img src="Images/proj-8.jpg" alt="Timber Pergola with Clearlite Roofing" loading="lazy"/>
         <div class="pf-cell-info">
-          <div class="pf-cell-cat">Interior · Storage</div>
-          <div class="pf-cell-name">Attic Ladder Installation</div>
-          <div class="pf-cell-desc">Clean attic access fitted into a garage conversion — tidy, space-saving, built to last.</div>
+          <div class="pf-cell-cat">Outdoor · Decking</div>
+          <div class="pf-cell-name">Timber Pergola with Clearlite Roofing</div>
+          <div class="pf-cell-desc">Timber Pergola with Clearlite Roofing (99.9% UV protection) — a stunning outdoor room built to last.</div>
         </div>
       </div>
+      <!-- cell-2: small → Timber Cladding -->
       <div class="pf-cell pf-cell-2" data-img="Images/proj-2.jpg" data-cat="Interior · Timber" data-name="Timber Cladding" data-desc="Premium timber cladding for stunning interior character and warmth.">
         <img src="Images/proj-2.jpg" alt="Timber cladding interior" loading="lazy"/>
         <div class="pf-cell-info">
@@ -1101,31 +1103,17 @@ footer{background:var(--dark);padding:80px 0 0}
           <div class="pf-cell-desc">Premium timber cladding for stunning interior character and warmth.</div>
         </div>
       </div>
-      <div class="pf-cell pf-cell-3" data-img="Images/RetroFitWindoors.JPG" data-cat="Exterior · Renovation" data-name="Retro Fit Windows and Doors" data-desc="Retro fit windows and doors replacement — modernising Christchurch homes with precision and care.">
-        <img src="Images/RetroFitWindoors.JPG" alt="Retro Fit Windows and Doors" loading="lazy"/>
+      <!-- cell-3: small → Attic Ladder -->
+      <div class="pf-cell pf-cell-3" data-img="Images/proj-1.jpg" data-cat="Interior · Storage" data-name="Attic Ladder Installation" data-desc="Clean attic access fitted into a garage conversion — tidy, space-saving, built to last.">
+        <img src="Images/proj-1.jpg" alt="Attic ladder installation" loading="lazy"/>
         <div class="pf-cell-info">
-          <div class="pf-cell-cat">Exterior · Renovation</div>
-          <div class="pf-cell-name">Retro Fit Windows and Doors</div>
-          <div class="pf-cell-desc">Retro fit windows and doors replacement — modernising Christchurch homes with precision and care.</div>
+          <div class="pf-cell-cat">Interior · Storage</div>
+          <div class="pf-cell-name">Attic Ladder Installation</div>
+          <div class="pf-cell-desc">Clean attic access fitted into a garage conversion — tidy, space-saving, built to last.</div>
         </div>
       </div>
-      <div class="pf-cell pf-cell-4" data-img="Images/proj-4.jpg" data-cat="Multi-Unit · Decking" data-name="Decking install City Centre" data-desc="Multi-unit residential build with full decking and sleek black balustrades throughout.">
-        <img src="Images/proj-4.jpg" alt="Decking install City Centre" loading="lazy"/>
-        <div class="pf-cell-info">
-          <div class="pf-cell-cat">Multi-Unit · Decking</div>
-          <div class="pf-cell-name">Decking install City Centre</div>
-          <div class="pf-cell-desc">Multi-unit residential build with full decking and sleek black balustrades throughout.</div>
-        </div>
-      </div>
-      <div class="pf-cell pf-cell-6" data-img="Images/proj-6.jpg" data-cat="Exterior · Renovation" data-name="Cashmere Re-Roof and Renovation" data-desc="Cashmere re-roof and full renovation — quality workmanship from start to finish.">
-        <img src="Images/proj-6.jpg" alt="Cashmere Re-Roof and Renovation" loading="lazy"/>
-        <div class="pf-cell-info">
-          <div class="pf-cell-cat">Exterior · Renovation</div>
-          <div class="pf-cell-name">Cashmere Re-Roof and Renovation</div>
-          <div class="pf-cell-desc">Cashmere re-roof and full renovation — quality workmanship from start to finish.</div>
-        </div>
-      </div>
-      <div class="pf-cell pf-cell-7" data-img="Images/proj-7.jpg" data-cat="Interior · Staircase" data-name="Grand Staircase & Flooring" data-desc="Grand statement staircase with dark timber handrails and premium carpet runner.">
+      <!-- cell-4: tall portrait → Grand Staircase -->
+      <div class="pf-cell pf-cell-4" data-img="Images/proj-7.jpg" data-cat="Interior · Staircase" data-name="Grand Staircase & Flooring" data-desc="Grand statement staircase with dark timber handrails and premium carpet runner.">
         <img src="Images/proj-7.jpg" alt="Grand staircase flooring" loading="lazy"/>
         <div class="pf-cell-info">
           <div class="pf-cell-cat">Interior · Staircase</div>
@@ -1133,12 +1121,31 @@ footer{background:var(--dark);padding:80px 0 0}
           <div class="pf-cell-desc">Grand statement staircase with dark timber handrails and premium carpet runner.</div>
         </div>
       </div>
-      <div class="pf-cell pf-cell-8" data-img="Images/proj-8.jpg" data-cat="Outdoor · Decking" data-name="Timber Pergola with Clearlite Roofing" data-desc="Timber Pergola with Clearlite Roofing (99.9% UV protection).">
-        <img src="Images/proj-8.jpg" alt="Timber Pergola with Clearlite Roofing" loading="lazy"/>
+      <!-- cell-6: 3-wide landscape → RetroFit Windows -->
+      <div class="pf-cell pf-cell-6" data-img="Images/RetroFitWindoors.JPG" data-cat="Exterior · Renovation" data-name="Retro Fit Windows and Doors" data-desc="Retro fit windows and doors replacement — modernising Canterbury homes with precision and care.">
+        <img src="Images/RetroFitWindoors.JPG" alt="Retro Fit Windows and Doors" loading="lazy"/>
         <div class="pf-cell-info">
-          <div class="pf-cell-cat">Outdoor · Decking</div>
-          <div class="pf-cell-name">Timber Pergola with Clearlite Roofing</div>
-          <div class="pf-cell-desc">Timber Pergola with Clearlite Roofing (99.9% UV protection).</div>
+          <div class="pf-cell-cat">Exterior · Renovation</div>
+          <div class="pf-cell-name">Retro Fit Windows and Doors</div>
+          <div class="pf-cell-desc">Retro fit windows and doors replacement — modernising Canterbury homes with precision and care.</div>
+        </div>
+      </div>
+      <!-- cell-7: 2-wide → Decking City Centre -->
+      <div class="pf-cell pf-cell-7" data-img="Images/proj-4.jpg" data-cat="Multi-Unit · Decking" data-name="Decking install City Centre" data-desc="Multi-unit residential build with full decking and sleek black balustrades throughout.">
+        <img src="Images/proj-4.jpg" alt="Decking install City Centre" loading="lazy"/>
+        <div class="pf-cell-info">
+          <div class="pf-cell-cat">Multi-Unit · Decking</div>
+          <div class="pf-cell-name">Decking install City Centre</div>
+          <div class="pf-cell-desc">Multi-unit residential build with full decking and sleek black balustrades throughout.</div>
+        </div>
+      </div>
+      <!-- cell-8: small → Cashmere Re-Roof -->
+      <div class="pf-cell pf-cell-8" data-img="Images/proj-6.jpg" data-cat="Exterior · Renovation" data-name="Cashmere Re-Roof and Renovation" data-desc="Cashmere re-roof and full renovation — quality workmanship from start to finish.">
+        <img src="Images/proj-6.jpg" alt="Cashmere Re-Roof and Renovation" loading="lazy"/>
+        <div class="pf-cell-info">
+          <div class="pf-cell-cat">Exterior · Renovation</div>
+          <div class="pf-cell-name">Cashmere Re-Roof and Renovation</div>
+          <div class="pf-cell-desc">Cashmere re-roof and full renovation — quality workmanship from start to finish.</div>
         </div>
       </div>
     </div>
@@ -1185,9 +1192,9 @@ footer{background:var(--dark);padding:80px 0 0}
         <img src="Images/Reno8.JPEG" alt="Kwila timber deck outdoor entertaining Canterbury" loading="lazy"/>
         <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Outdoor</div><div class="pf-cell-name">Kwila Deck &amp; Outdoor Entertaining</div></div>
       </div>
-      <div class="pf-cell" data-img="Images/Reno9.JPEG" data-cat="Full Renovation · Exterior" data-name="Rear Garden & Lawn Transformation" data-desc="Rear garden overhaul featuring a fresh lawn, deck extension and tidy exterior — completing a full property transformation inside and out.">
+      <div class="pf-cell" data-img="Images/Reno9.JPEG" data-cat="Full Renovation · Exterior" data-name="Kwila Deck & Rear Garden" data-desc="Rear garden overhaul featuring a fresh lawn, deck extension and tidy exterior — completing a full property transformation inside and out.">
         <img src="Images/Reno9.JPEG" alt="Rear garden lawn transformation Canterbury" loading="lazy"/>
-        <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Exterior</div><div class="pf-cell-name">Rear Garden &amp; Lawn Transformation</div></div>
+        <div class="pf-cell-info"><div class="pf-cell-cat">Full Renovation · Exterior</div><div class="pf-cell-name">Kwila Deck &amp; Rear Garden</div></div>
       </div>
       <div class="pf-cell" data-img="Images/Renovation.JPG" data-cat="Renovation · Interior Timber" data-name="Premium Cedar Cladding & Feature Interior" data-desc="Floor-to-ceiling cedar tongue & groove cladding with integrated wall sconce lighting — a standout feature in this premium Canterbury renovation.">
         <img src="Images/Renovation.JPG" alt="Premium cedar cladding feature wall renovation interior" loading="lazy"/>
@@ -1242,7 +1249,7 @@ footer{background:var(--dark);padding:80px 0 0}
 <section id="stats">
   <div class="stats-inner">
     <div class="stats-label sr">Why Choose DKNZ</div>
-    <div class="stats-grid" style="grid-template-columns:repeat(5,1fr)">
+    <div class="stats-grid" style="grid-template-columns:repeat(3,1fr)">
       <div class="stat-box sr d1">
         <span class="stat-n"><span data-count="20" data-sfx="+">0</span></span>
         <div class="stat-l">Years in Industry</div>
@@ -1259,8 +1266,8 @@ footer{background:var(--dark);padding:80px 0 0}
         <span class="stat-n"><span data-count="5" data-sfx=".0 ★">0</span></span>
         <div class="stat-l">Verified Rating</div>
       </div>
-      <div class="stat-box sr mobile-only" style="flex-direction:column;justify-content:flex-end">
-        <span class="stat-n" style="font-size:clamp(1.6rem,7vw,2.4rem);letter-spacing:.01em;line-height:1.05">LBP<br/>NZCB</span>
+      <div class="stat-box sr d5-lbp">
+        <span class="stat-n" style="font-size:clamp(1.6rem,4vw,2.8rem);letter-spacing:.01em;line-height:1.05">LBP<br/>NZCB</span>
         <div class="stat-l">Licensed &amp; Certified</div>
       </div>
       <div class="stat-box sr d5">
