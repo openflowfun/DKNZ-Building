@@ -512,6 +512,7 @@ footer{background:var(--dark);padding:80px 0 0}
   .ab-decade{font-size:clamp(3rem,18vw,7rem);text-align:center}
   .ab-right h2{font-size:1.55rem;line-height:1.1}
   .ab-right h2 br{display:none}
+  .ab-right h2 br.mobile-br{display:block}
   .ab-decade-lbl{justify-content:center;padding-top:32px;flex-direction:column;line-height:1.5}
   br.mobile-br{display:block}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
@@ -543,6 +544,22 @@ footer{background:var(--dark);padding:80px 0 0}
   .stat-box{padding:28px 16px;text-align:center;align-items:center}
   .stat-n{font-size:clamp(2rem,9vw,3rem);white-space:nowrap}
   .stat-l{font-size:.58rem;letter-spacing:.14em;margin-top:10px;text-align:center}
+}
+/* ── SERVICE BOTTOM SHEET ── */
+.svc-sheet{display:none}
+@media(max-width:768px){
+  .svc-sheet{display:block;position:fixed;inset:0;z-index:900;pointer-events:none}
+  .svc-sheet.open{pointer-events:auto}
+  .svc-sheet-bg{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .3s}
+  .svc-sheet.open .svc-sheet-bg{background:rgba(0,0,0,.65)}
+  .svc-sheet-panel{position:absolute;bottom:0;left:0;right:0;background:var(--dark);border-radius:18px 18px 0 0;padding:12px 28px 52px;transform:translateY(100%);transition:transform .36s cubic-bezier(.4,0,.2,1)}
+  .svc-sheet.open .svc-sheet-panel{transform:translateY(0)}
+  .svc-sheet-handle{width:44px;height:4px;background:rgba(255,255,255,.18);border-radius:2px;margin:0 auto 22px}
+  .svc-sheet-icon{color:var(--green);margin-bottom:14px;width:36px;height:36px}
+  .svc-sheet-icon svg{width:36px;height:36px}
+  .svc-sheet-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;letter-spacing:.02em;color:#fff;margin-bottom:12px;line-height:1}
+  .svc-sheet-desc{font-size:.94rem;color:rgba(255,255,255,.6);line-height:1.75}
+  .svc-sheet-close{margin-top:28px;background:var(--green);color:#fff;padding:14px 0;width:100%;font-family:'Barlow Condensed',sans-serif;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;border:none;cursor:pointer}
 }
 @media(max-width:480px){
   .svc-grid{grid-template-columns:1fr 1fr}
@@ -805,7 +822,7 @@ footer{background:var(--dark);padding:80px 0 0}
         <div class="ab-decade-lbl">Years in<br class="mobile-br"> Industry</div>
       </div>
       <div class="ab-right sr">
-        <h2>Crafting Excellence,<br/><em>Building Trust</em> - One Project at a Time.</h2>
+        <h2>Crafting Excellence,<br class="mobile-br"/><br/><em>Building Trust</em> -<br class="mobile-br"> One Project at a Time.</h2>
         <p>We are a licensed building company with 20+ years of experience in the construction industry, including over 10 years delivering high-quality projects across Christchurch and surrounding areas. Specialising in new builds, renovations, house levelling, foundation replacements, and complex earthquake repairs, we bring expert knowledge, exceptional attention to detail, and proven craftsmanship to every project.</p>
         <p>From high-end kitchens and bathrooms to roofing, structural concreting, tiling, waterproofing, painting, and full interior/exterior finishes, we provide a complete end-to-end building service. Owner Dave personally leads every project with a strong focus on quality workmanship, efficient timelines, and competitive pricing — all backed by full insurance cover — taking the pressure off you while saving time and money.</p>
         <div class="ab-tags">
@@ -849,7 +866,7 @@ footer{background:var(--dark);padding:80px 0 0}
         <div class="svc-n">01</div>
         <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20h20M4 20V10l8-6 8 6v10M10 20v-6h4v6"/></svg>
         <div class="svc-name">New Builds</div>
-        <div class="svc-desc">Specialising in large multi-unit and single residential new builds across Christchurch and Canterbury.</div>
+        <div class="svc-desc">Specialising in large multi-unit and single residential new builds across Canterbury.</div>
       </div>
 
       <div class="svc-cell">
@@ -1415,6 +1432,18 @@ footer{background:var(--dark);padding:80px 0 0}
   </div>
 </div>
 
+<!-- SERVICE BOTTOM SHEET -->
+<div id="svc-sheet" class="svc-sheet">
+  <div class="svc-sheet-bg" onclick="closeSvcSheet()"></div>
+  <div class="svc-sheet-panel">
+    <div class="svc-sheet-handle"></div>
+    <div class="svc-sheet-icon" id="ssheet-icon"></div>
+    <div class="svc-sheet-name" id="ssheet-name"></div>
+    <div class="svc-sheet-desc" id="ssheet-desc"></div>
+    <button class="svc-sheet-close" onclick="closeSvcSheet()">Close</button>
+  </div>
+</div>
+
 <!-- BACK TO TOP -->
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
   <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
@@ -1726,6 +1755,36 @@ document.querySelectorAll('img').forEach(i=>i.addEventListener('dragstart',e=>e.
   function unlockOnTouch(){tryPlay();document.removeEventListener('touchstart',unlockOnTouch);document.removeEventListener('click',unlockOnTouch);}
   document.addEventListener('touchstart',unlockOnTouch,{once:true,passive:true});
   document.addEventListener('click',unlockOnTouch,{once:true});
+})();
+
+// ── SERVICE BOTTOM SHEET (mobile only) ──
+(function(){
+  const sheet=document.getElementById('svc-sheet');
+  const sName=document.getElementById('ssheet-name');
+  const sDesc=document.getElementById('ssheet-desc');
+  const sIcon=document.getElementById('ssheet-icon');
+  function openSvcSheet(name,desc,iconHtml){
+    sName.textContent=name;
+    sDesc.textContent=desc;
+    sIcon.innerHTML=iconHtml;
+    sheet.classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+  window.closeSvcSheet=function(){
+    sheet.classList.remove('open');
+    document.body.style.overflow='';
+  };
+  document.querySelectorAll('.svc-cell').forEach(function(cell){
+    cell.addEventListener('click',function(){
+      if(window.innerWidth>768)return;
+      var name=(cell.querySelector('.svc-name')||{}).textContent||'';
+      var desc=(cell.querySelector('.svc-desc')||{}).textContent||'';
+      var iconEl=cell.querySelector('.svc-icon');
+      var iconHtml=iconEl?iconEl.outerHTML:'';
+      openSvcSheet(name,desc,iconHtml);
+    });
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')window.closeSvcSheet();});
 })();
 </script>
 </body>
