@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>DKNZ Building - Licensed Builders, Canterbury NZ</title>
-<meta name="description" content="DKNZ Building & Construction – Licensed builders in Canterbury with 20+ years experience. New builds, renovations, earthquake repairs, kitchens & more across Canterbury NZ."/>
+<meta name="description" content="DKNZ Building – Licensed builders in Canterbury with 20+ years experience. New builds, renovations, earthquake repairs, kitchens & more across Canterbury NZ."/>
 <link rel="canonical" href="https://openflowfun.github.io/DKNZ-Building/"/>
 <!-- Open Graph / Social Preview -->
 <meta property="og:type" content="website"/>
@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://openflowfun.github.io/DKNZ-Building/Images/logo.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
-<meta property="og:site_name" content="DKNZ Building & Construction"/>
+<meta property="og:site_name" content="DKNZ Building"/>
 <meta property="og:locale" content="en_NZ"/>
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
@@ -25,7 +25,7 @@
 <link rel="icon" href="Images/logo.png"/>
 <link rel="apple-touch-icon" href="Images/logo.png"/>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"LocalBusiness","name":"DKNZ Building & Construction","url":"https://openflowfun.github.io/DKNZ-Building/","address":{"@type":"PostalAddress","addressLocality":"Christchurch","addressRegion":"Canterbury","addressCountry":"NZ"},"areaServed":["Christchurch","Banks Peninsula","Selwyn","Waimakariri"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"45"}}
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"DKNZ Building","url":"https://openflowfun.github.io/DKNZ-Building/","address":{"@type":"PostalAddress","addressLocality":"Christchurch","addressRegion":"Canterbury","addressCountry":"NZ"},"areaServed":["Christchurch","Banks Peninsula","Selwyn","Waimakariri"],"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"45"}}
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -82,8 +82,8 @@ body.hov-img #cur-label{opacity:1}
 .nav-left{display:flex;align-items:center;padding:0 40px;height:100%}
 .nav-right{display:flex;align-items:center;justify-content:center;gap:28px;padding:0 28px}
 /* Logo: SVG filter - green pixels kept, all achromatic/white/dark removed. Works both states. */
-.nav-logo{height:64px;object-fit:contain;transition:height .4s;filter:url(#remove-white)}
-#nav.scrolled .nav-logo{height:48px}
+.nav-logo{height:80px;width:auto;min-width:120px;object-fit:contain;transition:height .4s;filter:url(#remove-white)}
+#nav.scrolled .nav-logo{height:60px;min-width:100px}
 .nav-links{display:flex;gap:28px;list-style:none}
 .nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.75);transition:opacity .3s,color .3s}
 .nav-links a:hover{color:var(--gl)}
@@ -448,7 +448,7 @@ br.mobile-br{display:none}
 footer{background:var(--dark);padding:80px 0 0}
 .ft-inner{max-width:1280px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:80px}
 .ft-brand{}
-.ft-logo{height:52px;object-fit:contain;opacity:.95;margin-bottom:20px;filter:url(#remove-white)}
+.ft-logo{height:72px;width:auto;min-width:120px;object-fit:contain;opacity:.95;margin-bottom:20px;filter:url(#remove-white)}
 .ft-tagline{font-size:.88rem;color:rgba(255,255,255,.4);line-height:1.7;max-width:280px}
 .ft-head{font-family:'Barlow Condensed',sans-serif;font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--green);margin-bottom:20px}
 .ft-links{list-style:none;display:flex;flex-direction:column;gap:10px}
@@ -504,7 +504,7 @@ footer{background:var(--dark);padding:80px 0 0}
   .nav-right{padding:0 18px;justify-content:flex-end;gap:12px}
   .nav-links,.nav-quote{display:none}
   .ham{display:flex}
-  .nav-logo{height:40px}
+  .nav-logo{height:56px;min-width:90px}
   .hero-l{padding:80px 24px 60px}
   .hero-logo{display:none}
   .ab-inner,.svc-inner,.proj-inner,.proc-inner,.stats-inner,.tst-inner{padding:0 20px}
@@ -545,7 +545,7 @@ footer{background:var(--dark);padding:80px 0 0}
     border-top:1px solid rgba(255,255,255,.07);padding-top:28px;margin-top:4px
   }
   .ft-tagline,.ft-brand>div{display:none}
-  .ft-logo{margin:0 auto;height:44px}
+  .ft-logo{margin:0 auto;height:60px;min-width:100px}
   .ft-head{text-align:center}
   .ft-links{align-items:center}
   .ft-bar{padding:20px 20px;flex-direction:column;align-items:center;text-align:center;gap:6px}
@@ -727,7 +727,7 @@ footer{background:var(--dark);padding:80px 0 0}
 <!-- ═══ NAV ═══ -->
 <nav id="nav">
   <div class="nav-left">
-    <a href="#hero"><img src="Images/logo.png" alt="DKNZ Building & Construction" class="nav-logo"/></a>
+    <a href="#hero"><img src="Images/logo.png" alt="DKNZ Building" class="nav-logo"/></a>
   </div>
   <div class="nav-right">
     <ul class="nav-links">
@@ -1714,8 +1714,11 @@ async function handleSubmit(e,btnId,okId){
   e.preventDefault();
   const btn=document.getElementById(btnId);btn.disabled=true;btn.textContent='Sending…';
   const fd=new FormData(e.target);
-  fd.append('access_key','YOUR_WEB3FORMS_KEY');
-  fd.append('subject','New Enquiry – DKNZ Building & Construction');
+  fd.append('access_key','f62ce7d1-8a4b-4d07-8f7b-e7224a402bc5');
+  fd.append('subject','New Enquiry – DKNZ Building');
+  fd.append('from_name', fd.get('name')||'Website Enquiry');
+  fd.append('replyto', fd.get('email')||'');
+  fd.append('botcheck','');
   try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});const d=await r.json();
     if(d.success){e.target.reset();const ok=document.getElementById(okId);ok.style.display='block';setTimeout(()=>ok.style.display='none',5000);}
   }catch(_){}
