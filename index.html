@@ -700,6 +700,10 @@ footer{background:var(--dark);padding:80px 0 0}
   .ab-tags{display:grid;grid-template-columns:1fr 1fr;gap:8px;justify-items:center}
   .ab-tag{width:100%;text-align:center}
   .ab-tag-break{display:none}
+  .mob-break{display:block}
+}
+@media(min-width:769px){
+  .mob-break{display:none}
 }
 </style>
 </head>
@@ -767,7 +771,7 @@ footer{background:var(--dark);padding:80px 0 0}
   <div class="hero-l">
     <div class="hero-eye">Licensed Building Practitioner &nbsp;·&nbsp; Master Builders Association</div>
     <h1 class="hero-h1">BUILDING<br/><em>CANTERBURY'S</em><br/>FINEST</h1>
-    <p class="hero-sub">10+ years crafting exceptional homes across Canterbury - on time, on budget, every time.</p>
+    <p class="hero-sub">10+ years crafting exceptional homes across Canterbury –<span class="mob-br"> </span><span class="mob-inline"><br class="mob-break"/>on time, on budget, every time.</span></p>
     <div class="hero-btns">
       <button class="btn-g" onclick="openModal()">
         Get a Free Quote
