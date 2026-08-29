@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dknz.co.nz/sitemap.xml
